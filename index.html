@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Youssef Hany — Technical Operations & E-commerce Specialist</title>
+  <meta name="description" content="Portfolio of Youssef Hany — Operations Specialist at Dsquares with expertise in E-commerce, website development, BI reporting, KPI tracking, and digital solutions. Cairo, Egypt." />
+  <meta name="keywords" content="Youssef Hany, Operations Specialist, E-commerce, BI Reporting, KPI, Excel, Website Development, Dsquares, Cairo, Egypt, Portfolio" />
+  <meta name="author" content="Youssef Hany" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Youssef Hany — Technical Operations & E-commerce Specialist" />
+  <meta property="og:description" content="Operations Specialist with expertise in E-commerce, BI Reporting, KPI Tracking, and Digital Solutions." />
+  <meta property="og:image" content="profile.jpg" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Youssef Hany — Portfolio" />
+  <meta name="twitter:description" content="Operations Specialist | E-commerce | BI Reporting | Digital Solutions" />
+  <meta name="twitter:image" content="profile.jpg" />
+
+  <!-- Theme -->
+  <meta name="theme-color" content="#060810" />
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ===================== PRELOADER ===================== -->
+  <div id="preloader">
+    <div class="preloader-inner">
+      <div class="preloader-logo-wrap"><img src="profile.jpg" alt="Logo" class="preloader-logo-img" /></div>
+      <div class="preloader-bar"><div class="preloader-fill"></div></div>
+      <div class="preloader-text">Initializing Systems<span class="dots"></span></div>
+    </div>
+  </div>
+
+  <!-- ===================== CUSTOM CURSOR ===================== -->
+  <div id="cursor-dot"></div>
+  <div id="cursor-ring"></div>
+
+  <!-- ===================== SCROLL PROGRESS ===================== -->
+  <div id="scroll-progress"></div>
+
+  <!-- ===================== NAVBAR ===================== -->
+  <nav id="navbar">
+    <div class="nav-container">
+      <a href="#home" class="nav-logo">
+        <img src="profile.jpg" alt="Youssef Hany" class="nav-logo-img" />
+        <span class="nav-logo-text">Youssef Hany</span>
+      </a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#home" class="nav-link active">Home</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#experience" class="nav-link">Experience</a></li>
+        <li><a href="#education" class="nav-link">Education</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+      <div class="nav-right">
+        <button id="theme-toggle" title="Toggle theme">
+          <span class="theme-icon">◐</span>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===================== HERO ===================== -->
+  <section id="home" class="hero">
+    <canvas id="particles-canvas"></canvas>
+    <div class="hero-grid-overlay"></div>
+
+    <div class="hero-content">
+      <div class="hero-layout">
+        <div class="hero-text-col">
+          <div class="hero-badge reveal-up">
+            <span class="badge-dot"></span>
+            Available for opportunities
+          </div>
+
+          <h1 class="hero-name reveal-up delay-1">
+            <span class="name-line">Youssef</span>
+            <span class="name-line accent">Hany</span>
+          </h1>
+
+          <div class="hero-title reveal-up delay-2">
+            <span class="typing-text" id="typing-text"></span>
+            <span class="cursor-blink">|</span>
+          </div>
+
+          <p class="hero-subtitle reveal-up delay-3">
+            Technical Operations • E-commerce • Digital Solutions • BI Reporting
+          </p>
+
+          <p class="hero-desc reveal-up delay-4">
+            Dedicated professional with experience in E-commerce, website development, technical support,
+            and digital solutions. Skilled in problem-solving, Excel reporting, KPI tracking,
+            and exploring new technologies to drive operational excellence.
+          </p>
+
+
+          <div class="hero-ctas reveal-up delay-5">
+            <a href="#projects" class="btn-primary">
+              <span>View Projects</span>
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="CV_Youssef_Hany.pdf" download="CV_Youssef_Hany.pdf" class="btn-download" id="download-cv-btn">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M8 2v8M5 7l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M2 12h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+              <span>Download CV</span>
+            </a>
+            <a href="#contact" class="btn-ghost">Contact Me</a>
+          </div>
+
+          <!-- KPI Cards -->
+          <div class="hero-kpis reveal-up delay-6">
+            <div class="kpi-card">
+              <div class="kpi-value"><span class="counter" data-target="6">0</span>+</div>
+              <div class="kpi-label">Years Experience</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-value"><span class="counter" data-target="4">0</span></div>
+              <div class="kpi-label">Companies</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-value"><span class="counter" data-target="12">0</span>+</div>
+              <div class="kpi-label">Core Skills</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-value"><span class="counter" data-target="100">0</span>%</div>
+              <div class="kpi-label">Commitment</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-image-col reveal-right delay-2">
+          <div class="hero-profile-img-wrap">
+            <img src="profile.jpg" alt="Youssef Hany" class="hero-profile-img" />
+            <div class="hero-profile-ring ring-1"></div>
+            <div class="hero-profile-ring ring-2"></div>
+            <div class="hero-profile-ring ring-3"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-scroll-hint">
+      <div class="scroll-mouse"><div class="scroll-dot"></div></div>
+      <span>Scroll to explore</span>
+    </div>
+  </section>
+
+  <!-- ===================== ABOUT ===================== -->
+  <section id="about" class="about section">
+    <div class="container">
+      <div class="section-header reveal-up">
+        <span class="section-tag">// 01 — About</span>
+        <h2 class="section-title">About Me</h2>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-visual reveal-left">
+          <div class="about-avatar-wrap">
+            <div class="about-avatar">
+              <img src="profile.jpg" alt="Youssef Hany" class="avatar-inner-img" />
+              <div class="avatar-ring ring-1"></div>
+              <div class="avatar-ring ring-2"></div>
+              <div class="avatar-ring ring-3"></div>
+            </div>
+            <div class="about-stats-float">
+              <div class="stat-float"><span class="sf-val">SQL</span><span class="sf-lbl">Expert</span></div>
+              <div class="stat-float"><span class="sf-val">BI</span><span class="sf-lbl">Analyst</span></div>
+              <div class="stat-float"><span class="sf-val">OPS</span><span class="sf-lbl">Manager</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-text reveal-right">
+          <p class="about-lead">
+            Dedicated and detail-oriented professional with experience in <span class="highlight">E-commerce, website development, technical support, and digital solutions</span>.
+          </p>
+          <p>
+            Skilled in problem-solving, presentation design, Excel organization, and freelance content editing.
+            I work across operational coordination, KPI tracking, BI reporting, and cross-functional team collaboration.
+          </p>
+          <p>
+            I have hands-on experience in website development, payment gateway integration, SSL setup, 
+            troubleshooting, and digital infrastructure management using modern Vibe Coding tools.
+          </p>
+          <p>
+            Currently working in operations at <span class="highlight">Dsquares</span> — passionate about 
+            continuous learning, reading, and exploring new technologies to improve both technical and professional skills.
+          </p>
+
+          <div class="about-tags">
+            <span class="tag">Excel & BI Reporting</span>
+            <span class="tag">E-commerce</span>
+            <span class="tag">Operations</span>
+            <span class="tag">KPI Monitoring</span>
+            <span class="tag">Website Development</span>
+            <span class="tag">SSL & Security</span>
+            <span class="tag">AI Tools</span>
+            <span class="tag">Technical Support</span>
+            <span class="tag">Freelance</span>
+            <span class="tag">Vibe Coding</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== EXPERIENCE ===================== -->
+  <section id="experience" class="experience section">
+    <div class="container">
+      <div class="section-header reveal-up">
+        <span class="section-tag">// 02 — Experience</span>
+        <h2 class="section-title">Work Timeline</h2>
+      </div>
+
+      <div class="timeline">
+
+        <!-- Dsquares -->
+        <div class="timeline-item reveal-left">
+          <div class="timeline-marker">
+            <div class="marker-dot active"></div>
+            <div class="marker-line"></div>
+          </div>
+          <div class="timeline-card glass">
+            <div class="tc-header">
+              <div class="tc-company-wrap">
+                <div class="tc-icon">D</div>
+                <div>
+                  <h3 class="tc-company">Dsquares</h3>
+                  <span class="tc-duration current">2025 — Present</span>
+                </div>
+              </div>
+              <span class="tc-badge current-badge">Current</span>
+            </div>
+            <h4 class="tc-role">Operations Specialist</h4>
+            <ul class="tc-list">
+              <li>Coordinate field and operational workflows to ensure efficiency across all branch activities</li>
+              <li>Track and evaluate key operational performance metrics (KPIs) for branches</li>
+              <li>Prepare, organize, and analyze operational reports using Excel and BI tools</li>
+              <li>Identify operational issues and resolve them in a timely manner</li>
+              <li>Collaborate with cross-functional teams to streamline and improve operational procedures</li>
+              <li>Deliver training sessions for staff on system usage, point burn mechanisms, and telecom/bank voucher operations</li>
+            </ul>
+            <div class="tc-tags">
+              <span>Excel</span><span>BI Reporting</span><span>KPI Tracking</span>
+              <span>Training</span><span>Workflow Optimization</span><span>Cross-functional Teams</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- G4S -->
+        <div class="timeline-item reveal-right">
+          <div class="timeline-marker">
+            <div class="marker-dot"></div>
+            <div class="marker-line"></div>
+          </div>
+          <div class="timeline-card glass">
+            <div class="tc-header">
+              <div class="tc-company-wrap">
+                <div class="tc-icon">G</div>
+                <div>
+                  <h3 class="tc-company">G4S</h3>
+                  <span class="tc-duration">2020 — 2025</span>
+                </div>
+              </div>
+            </div>
+            <h4 class="tc-role">Supervisor</h4>
+            <ul class="tc-list">
+              <li>Follow up on the necessary procedures for the site engineer</li>
+              <li>Continuously inspect the store contents and the site</li>
+              <li>Record daily store contents using Excel</li>
+              <li>Obtain the necessary permits for equipment exit, return, and entire site contents</li>
+              <li>Coordinate with the engineer to ensure timely implementation without wasting time</li>
+            </ul>
+            <div class="tc-tags">
+              <span>Team Leadership</span><span>Site Supervision</span>
+              <span>Excel Tracking</span><span>Coordination</span><span>Decision Making</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- E-commerce & Freelance -->
+        <div class="timeline-item reveal-left">
+          <div class="timeline-marker">
+            <div class="marker-dot"></div>
+            <div class="marker-line"></div>
+          </div>
+          <div class="timeline-card glass">
+            <div class="tc-header">
+              <div class="tc-company-wrap">
+                <div class="tc-icon">F</div>
+                <div>
+                  <h3 class="tc-company">E-commerce &amp; Freelance</h3>
+                  <span class="tc-duration">2024 &mdash; Present</span>
+                </div>
+              </div>
+              <span class="tc-badge founder-badge">Self-Employed</span>
+            </div>
+            <h4 class="tc-role">E-commerce &amp; Digital Freelancer</h4>
+            <ul class="tc-list">
+              <li>Freelance Video Editing, Book Formatting &amp; Scientific Research Reformatting</li>
+              <li>Excel Reporting, Data Organization &amp; Presentation Design</li>
+              <li>E-commerce Store Development &amp; Management</li>
+              <li>Website Development using Vibe Coding Tools</li>
+              <li>Payment Gateway Integration &amp; Troubleshooting</li>
+              <li>SSL Installation &amp; Website Security Optimization</li>
+            </ul>
+            <div class="tc-tags">
+              <span>E-commerce</span><span>Website Dev</span><span>Freelance</span>
+              <span>SSL &amp; Security</span><span>Excel Reporting</span><span>Vibe Coding</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Vodafone -->
+        <div class="timeline-item reveal-right">
+          <div class="timeline-marker">
+            <div class="marker-dot"></div>
+          </div>
+          <div class="timeline-card glass">
+            <div class="tc-header">
+              <div class="tc-company-wrap">
+                <div class="tc-icon">V</div>
+                <div>
+                  <h3 class="tc-company">Vodafone</h3>
+                  <span class="tc-duration">2019 &mdash; 2020</span>
+                </div>
+              </div>
+            </div>
+            <h4 class="tc-role">Tele Sales</h4>
+            <ul class="tc-list">
+              <li>Communicate with customers via phone and understand their needs</li>
+              <li>Persuade customers in a positive manner and present offers to encourage purchases</li>
+              <li>Handle customer inquiries in alignment with both customer needs and company policies</li>
+            </ul>
+            <div class="tc-tags">
+              <span>Customer Service</span><span>Tele Sales</span>
+              <span>Communication</span><span>Negotiation</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== EDUCATION ===================== -->
+  <section id="education" class="education section">
+    <div class="container">
+      <div class="section-header reveal-up">
+        <span class="section-tag">// 03 — Education</span>
+        <h2 class="section-title">Academic Background</h2>
+      </div>
+
+      <div class="edu-grid">
+        <div class="edu-card glass reveal-left">
+          <div class="edu-icon">🎓</div>
+          <div class="edu-content">
+            <h3 class="edu-degree">Bachelor of Information Systems &amp; Administrative Sciences</h3>
+            <span class="edu-school">Higher Institute of Administrative Sciences — Katameya</span>
+            <span class="edu-year">2021 — 2022</span>
+            <p class="edu-note">Excellence in Graduation Project — A complete e-book about Internet and Multimedia Applications.</p>
+          </div>
+        </div>
+
+        <div class="edu-courses-wrap reveal-right">
+          <h3 class="courses-title">Certifications &amp; Courses</h3>
+          <div class="courses-grid">
+            <div class="course-item glass">
+              <span class="course-icon">🏢</span>
+              <div>
+                <span class="course-name">Vinci Firefighting Basics</span>
+                <span class="course-type">Corporate Training</span>
+              </div>
+            </div>
+            <div class="course-item glass">
+              <span class="course-icon">🛡️</span>
+              <div>
+                <span class="course-name">Occupational Safety &amp; Health</span>
+                <span class="course-type">Vinci — Corporate Training</span>
+              </div>
+            </div>
+            <div class="course-item glass">
+              <span class="course-icon">👥</span>
+              <div>
+                <span class="course-name">Team Management</span>
+                <span class="course-type">G4S — Corporate Training</span>
+              </div>
+            </div>
+            <div class="course-item glass">
+              <span class="course-icon">💻</span>
+              <div>
+                <span class="course-name">Word / Excel / PowerPoint</span>
+                <span class="course-type">Online Course</span>
+              </div>
+            </div>
+            <div class="course-item glass">
+              <span class="course-icon">🤝</span>
+              <div>
+                <span class="course-name">Soft Skills Management</span>
+                <span class="course-type">Online Course</span>
+              </div>
+            </div>
+            <div class="course-item glass">
+              <span class="course-icon">🔍</span>
+              <div>
+                <span class="course-name">Research &amp; Information Gathering</span>
+                <span class="course-type">Online Course</span>
+              </div>
+            </div>
+            <div class="course-item glass">
+              <span class="course-icon">🤖</span>
+              <div>
+                <span class="course-name">Artificial Intelligence &amp; AI Tools</span>
+                <span class="course-type">Online Course</span>
+              </div>
+            </div>
+            <div class="course-item glass">
+              <span class="course-icon">🌐</span>
+              <div>
+                <span class="course-name">Basic HTML, C++ &amp; CSS</span>
+                <span class="course-type">Online Course</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SKILLS ===================== -->
+  <section id="skills" class="skills section">
+    <div class="container">
+      <div class="section-header reveal-up">
+        <span class="section-tag">// 03 — Skills</span>
+        <h2 class="section-title">Technical Arsenal</h2>
+      </div>
+
+      <div class="skills-grid">
+
+        <div class="skill-category reveal-up delay-1 glass">
+          <div class="sc-header">
+            <div class="sc-icon">◈</div>
+            <h3>Data & BI</h3>
+          </div>
+          <div class="skill-bars">
+            <div class="skill-bar-wrap">
+              <div class="sb-meta"><span>SQL</span><span>88%</span></div>
+              <div class="skill-track"><div class="skill-fill" data-width="88"></div></div>
+            </div>
+            <div class="skill-bar-wrap">
+              <div class="sb-meta"><span>Business Intelligence</span><span>82%</span></div>
+              <div class="skill-track"><div class="skill-fill" data-width="82"></div></div>
+            </div>
+            <div class="skill-bar-wrap">
+              <div class="sb-meta"><span>Data Analysis</span><span>85%</span></div>
+              <div class="skill-track"><div class="skill-fill" data-width="85"></div></div>
+            </div>
+            <div class="skill-bar-wrap">
+              <div class="sb-meta"><span>Data Visualization</span><span>78%</span></div>
+              <div class="skill-track"><div class="skill-fill" data-width="78"></div></div>
+            </div>
+            <div class="skill-bar-wrap">
+              <div class="sb-meta"><span>Reporting Systems</span><span>90%</span></div>
+              <div class="skill-track"><div class="skill-fill" data-width="90"></div></div>
+            </div>
+            <div class="skill-bar-wrap">
+              <div class="sb-meta"><span>KPI Analysis</span><span>87%</span></div>
+              <div class="skill-track"><div class="skill-fill" data-width="87"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-category reveal-up delay-2 glass">
+          <div class="sc-header">
+            <div class="sc-icon">⬡</div>
+            <h3>Technical Operations</h3>
+          </div>
+          <div class="skill-bars">
+            <div class="skill-bar-wrap">
+              <div class="sb-meta"><span>Process Optimization</span><span>92%</span></div>
+              <div class="skill-track"><div class="skill-fill" data-width="92"></div></div>
+            </div>
+            <div class="skill-bar-wrap">
+              <div class="sb-meta"><span>Workflow Management</span><span>90%</span></div>
+              <div class="skill-track"><div class="skill-fill" data-width="90"></div></div>
+            </div>
+            <div class="skill-bar-wrap">
+              <div class="sb-meta"><span>Operations Management</span><span>88%</span></div>
+              <div class="skill-track"><div class="skill-fill" data-width="88"></div></div>
+            </div>
+            <div class="skill-bar-wrap">
+              <div class="sb-meta"><span>Troubleshooting</span><span>85%</span></div>
+              <div class="skill-track"><div class="skill-fill" data-width="85"></div></div>
+            </div>
+            <div class="skill-bar-wrap">
+              <div class="sb-meta"><span>Cross-functional Coord.</span><span>83%</span></div>
+              <div class="skill-track"><div class="skill-fill" data-width="83"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-category reveal-up delay-3 glass">
+          <div class="sc-header">
+            <div class="sc-icon">◎</div>
+            <h3>Web & E-commerce</h3>
+          </div>
+          <div class="skill-bars">
+            <div class="skill-bar-wrap">
+              <div class="sb-meta"><span>Website Development</span><span>80%</span></div>
+              <div class="skill-track"><div class="skill-fill" data-width="80"></div></div>
+            </div>
+            <div class="skill-bar-wrap">
+              <div class="sb-meta"><span>WordPress</span><span>82%</span></div>
+              <div class="skill-track"><div class="skill-fill" data-width="82"></div></div>
+            </div>
+            <div class="skill-bar-wrap">
+              <div class="sb-meta"><span>Shopify</span><span>78%</span></div>
+              <div class="skill-track"><div class="skill-fill" data-width="78"></div></div>
+            </div>
+            <div class="skill-bar-wrap">
+              <div class="sb-meta"><span>Hosting & Domains</span><span>85%</span></div>
+              <div class="skill-track"><div class="skill-fill" data-width="85"></div></div>
+            </div>
+            <div class="skill-bar-wrap">
+              <div class="sb-meta"><span>SSL & Security</span><span>80%</span></div>
+              <div class="skill-track"><div class="skill-fill" data-width="80"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-category reveal-up delay-4 glass">
+          <div class="sc-header">
+            <div class="sc-icon">▣</div>
+            <h3>Productivity & Tools</h3>
+          </div>
+          <div class="skill-bars">
+            <div class="skill-bar-wrap">
+              <div class="sb-meta"><span>Excel</span><span>93%</span></div>
+              <div class="skill-track"><div class="skill-fill" data-width="93"></div></div>
+            </div>
+            <div class="skill-bar-wrap">
+              <div class="sb-meta"><span>PowerPoint</span><span>88%</span></div>
+              <div class="skill-track"><div class="skill-fill" data-width="88"></div></div>
+            </div>
+            <div class="skill-bar-wrap">
+              <div class="sb-meta"><span>Google Sheets</span><span>90%</span></div>
+              <div class="skill-track"><div class="skill-fill" data-width="90"></div></div>
+            </div>
+            <div class="skill-bar-wrap">
+              <div class="sb-meta"><span>AI Tools</span><span>85%</span></div>
+              <div class="skill-track"><div class="skill-fill" data-width="85"></div></div>
+            </div>
+            <div class="skill-bar-wrap">
+              <div class="sb-meta"><span>Documentation</span><span>88%</span></div>
+              <div class="skill-track"><div class="skill-fill" data-width="88"></div></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PROJECTS ===================== -->
+  <section id="projects" class="projects section">
+    <div class="container">
+      <div class="section-header reveal-up">
+        <span class="section-tag">// 04 — Projects</span>
+        <h2 class="section-title">Featured Work</h2>
+      </div>
+
+      <div class="filter-bar reveal-up">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="operations">Operations</button>
+        <button class="filter-btn" data-filter="ecommerce">E-commerce</button>
+        <button class="filter-btn" data-filter="bi">BI & Data</button>
+        <button class="filter-btn" data-filter="web">Web</button>
+      </div>
+
+      <div class="projects-grid" id="projects-grid">
+
+        <div class="project-card glass reveal-up" data-category="ecommerce web operations">
+          <div class="pc-top">
+            <div class="pc-icon">🛒</div>
+            <div class="pc-links">
+              <a href="#" class="pc-link" title="View Project">↗</a>
+            </div>
+          </div>
+          <h3>E-commerce Operations & Digital Infrastructure</h3>
+          <p>Managing technical and operational workflows for an E-commerce business including hosting, website management, security, and customer experience optimization.</p>
+          <div class="pc-features">
+            <span>Website Management</span>
+            <span>Hosting Setup</span>
+            <span>SSL Implementation</span>
+            <span>Technical Troubleshooting</span>
+            <span>Store Operations</span>
+            <span>Customer Workflow</span>
+          </div>
+        </div>
+
+        <div class="project-card glass reveal-up delay-1" data-category="bi operations">
+          <div class="pc-top">
+            <div class="pc-icon">📊</div>
+            <div class="pc-links">
+              <a href="#" class="pc-link" title="View Project">↗</a>
+            </div>
+          </div>
+          <h3>Operational Reporting & KPI Dashboard</h3>
+          <p>Designed and built structured reporting systems and KPI dashboards to monitor operational performance and drive data-informed business decisions.</p>
+          <div class="pc-features">
+            <span>Excel Dashboards</span>
+            <span>KPI Monitoring</span>
+            <span>Data Analysis</span>
+            <span>BI Reports</span>
+            <span>Process Tracking</span>
+          </div>
+        </div>
+
+        <div class="project-card glass reveal-up delay-2" data-category="operations">
+          <div class="pc-top">
+            <div class="pc-icon">⚙️</div>
+            <div class="pc-links">
+              <a href="#" class="pc-link" title="View Project">↗</a>
+            </div>
+          </div>
+          <h3>Workflow Optimization & Process Engineering</h3>
+          <p>Analyzed and restructured operational workflows to reduce errors, improve team coordination, and enhance overall execution quality across departments.</p>
+          <div class="pc-features">
+            <span>Process Mapping</span>
+            <span>Error Reduction</span>
+            <span>Team Coordination</span>
+            <span>SOP Development</span>
+            <span>Performance Improvement</span>
+          </div>
+        </div>
+
+        <div class="project-card glass reveal-up delay-3" data-category="web">
+          <div class="pc-top">
+            <div class="pc-icon">🌐</div>
+            <div class="pc-links">
+              <a href="#" class="pc-link" title="View Project">↗</a>
+            </div>
+          </div>
+          <h3>Digital Infrastructure Management</h3>
+          <p>End-to-end management of digital infrastructure including domain configuration, SSL certificates, hosting optimization, and website security hardening.</p>
+          <div class="pc-features">
+            <span>Domain Management</span>
+            <span>SSL Certificates</span>
+            <span>Hosting Optimization</span>
+            <span>Security Setup</span>
+            <span>Uptime Monitoring</span>
+          </div>
+        </div>
+
+        <div class="project-card glass reveal-up delay-4" data-category="bi">
+          <div class="pc-top">
+            <div class="pc-icon">🔍</div>
+            <div class="pc-links">
+              <a href="#" class="pc-link" title="View Project">↗</a>
+            </div>
+          </div>
+          <h3>SQL Data Analysis & Reporting</h3>
+          <p>Developed SQL queries and data analysis pipelines to extract operational insights, automate reporting, and support data-driven decision making.</p>
+          <div class="pc-features">
+            <span>SQL Queries</span>
+            <span>Data Extraction</span>
+            <span>Report Automation</span>
+            <span>Insight Generation</span>
+            <span>Data Cleansing</span>
+          </div>
+        </div>
+
+        <div class="project-card glass reveal-up delay-5" data-category="ecommerce operations">
+          <div class="pc-top">
+            <div class="pc-icon">🚀</div>
+            <div class="pc-links">
+              <a href="#" class="pc-link" title="View Project">↗</a>
+            </div>
+          </div>
+          <h3>Business Operations Scaling System</h3>
+          <p>Built scalable operational systems combining technology tools, documentation, and workflow structures to support business growth and team efficiency.</p>
+          <div class="pc-features">
+            <span>Scalable Systems</span>
+            <span>Documentation</span>
+            <span>AI Tools Integration</span>
+            <span>Growth Support</span>
+            <span>Efficiency Metrics</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SERVICES ===================== -->
+  <section id="services" class="services section">
+    <div class="container">
+      <div class="section-header reveal-up">
+        <span class="section-tag">// 05 — Services</span>
+        <h2 class="section-title">What I Do</h2>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-card glass reveal-up delay-1" data-tilt>
+          <div class="srv-icon">◈</div>
+          <h3>Technical Operations Management</h3>
+          <p>End-to-end operational coordination, workflow management, and process execution optimization for high-performance teams.</p>
+        </div>
+        <div class="service-card glass reveal-up delay-2" data-tilt>
+          <div class="srv-icon">▦</div>
+          <h3>Business Intelligence & Reporting</h3>
+          <p>Building BI dashboards, structured reports, and data visualization systems that turn raw data into actionable insights.</p>
+        </div>
+        <div class="service-card glass reveal-up delay-3" data-tilt>
+          <div class="srv-icon">⬡</div>
+          <h3>SQL Data Analysis</h3>
+          <p>Writing efficient SQL queries, automating data extraction, and developing data pipelines for operational analytics.</p>
+        </div>
+        <div class="service-card glass reveal-up delay-4" data-tilt>
+          <div class="srv-icon">◎</div>
+          <h3>Workflow Optimization</h3>
+          <p>Mapping, analyzing, and redesigning workflows to eliminate bottlenecks, reduce errors, and improve execution speed.</p>
+        </div>
+        <div class="service-card glass reveal-up delay-5" data-tilt>
+          <div class="srv-icon">▣</div>
+          <h3>E-commerce Operations</h3>
+          <p>Managing E-commerce platforms, store operations, product organization, and customer workflow improvements.</p>
+        </div>
+        <div class="service-card glass reveal-up delay-6" data-tilt>
+          <div class="srv-icon">⊕</div>
+          <h3>Website Management</h3>
+          <p>Full website lifecycle management including hosting, domains, SSL setup, security, and performance optimization.</p>
+        </div>
+        <div class="service-card glass reveal-up delay-1" data-tilt>
+          <div class="srv-icon">⊞</div>
+          <h3>KPI Monitoring</h3>
+          <p>Designing KPI frameworks, tracking systems, and performance monitoring dashboards to align teams with business goals.</p>
+        </div>
+        <div class="service-card glass reveal-up delay-2" data-tilt>
+          <div class="srv-icon">◐</div>
+          <h3>Process Improvement</h3>
+          <p>Identifying operational inefficiencies and implementing structured improvements through technology-driven solutions.</p>
+        </div>
+        <div class="service-card glass reveal-up delay-3" data-tilt>
+          <div class="srv-icon">⬢</div>
+          <h3>Technical Support</h3>
+          <p>Providing advanced technical troubleshooting, issue resolution, and infrastructure support for digital operations.</p>
+        </div>
+        <div class="service-card glass reveal-up delay-4" data-tilt>
+          <div class="srv-icon">◆</div>
+          <h3>Digital Solutions</h3>
+          <p>Designing and implementing digital transformation solutions that streamline business processes and drive growth.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== ACHIEVEMENTS ===================== -->
+  <section id="achievements" class="achievements section">
+    <div class="container">
+      <div class="section-header reveal-up">
+        <span class="section-tag">// 06 — Impact</span>
+        <h2 class="section-title">Key Achievements</h2>
+      </div>
+
+      <div class="achievements-grid">
+        <div class="ach-card glass reveal-up delay-1">
+          <div class="ach-icon">⚡</div>
+          <h4>Workflow Optimization</h4>
+          <p>Improved operational workflows and reporting systems across multiple business units</p>
+        </div>
+        <div class="ach-card glass reveal-up delay-2">
+          <div class="ach-icon">↓</div>
+          <h4>Error Reduction</h4>
+          <p>Reduced operational errors through organized processes and systematic quality control</p>
+        </div>
+        <div class="ach-card glass reveal-up delay-3">
+          <div class="ach-icon">🌐</div>
+          <h4>Tech Infrastructure</h4>
+          <p>Managed complete technical infrastructure for E-commerce operations including security</p>
+        </div>
+        <div class="ach-card glass reveal-up delay-4">
+          <div class="ach-icon">📈</div>
+          <h4>Scalable Operations</h4>
+          <p>Supported scalable business operations using technology-driven solutions and automation</p>
+        </div>
+        <div class="ach-card glass reveal-up delay-5">
+          <div class="ach-icon">◈</div>
+          <h4>BI & Insights</h4>
+          <p>Built operational insights using reporting and BI tools enabling data-informed decisions</p>
+        </div>
+        <div class="ach-card glass reveal-up delay-6">
+          <div class="ach-icon">🤝</div>
+          <h4>Team Excellence</h4>
+          <p>Coordinated with multiple teams to improve execution quality and operational discipline</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== TOOLS MARQUEE ===================== -->
+  <section class="tools-marquee-section section">
+    <div class="section-header reveal-up">
+      <span class="section-tag">// 07 — Tools</span>
+      <h2 class="section-title">Tech Stack</h2>
+    </div>
+    <div class="marquee-wrapper">
+      <div class="marquee-track" id="marquee-track">
+        <div class="marquee-inner">
+          <span class="tool-badge">SQL</span>
+          <span class="tool-badge">Power BI</span>
+          <span class="tool-badge">Excel</span>
+          <span class="tool-badge">Google Sheets</span>
+          <span class="tool-badge">WordPress</span>
+          <span class="tool-badge">Shopify</span>
+          <span class="tool-badge">AI Tools</span>
+          <span class="tool-badge">Hosting Platforms</span>
+          <span class="tool-badge">Reporting Systems</span>
+          <span class="tool-badge">PowerPoint</span>
+          <span class="tool-badge">SQL</span>
+          <span class="tool-badge">Power BI</span>
+          <span class="tool-badge">Excel</span>
+          <span class="tool-badge">Google Sheets</span>
+          <span class="tool-badge">WordPress</span>
+          <span class="tool-badge">Shopify</span>
+          <span class="tool-badge">AI Tools</span>
+          <span class="tool-badge">Hosting Platforms</span>
+          <span class="tool-badge">Reporting Systems</span>
+          <span class="tool-badge">PowerPoint</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CONTACT ===================== -->
+  <section id="contact" class="contact section">
+    <div class="container">
+      <div class="section-header reveal-up">
+        <span class="section-tag">// 08 — Contact</span>
+        <h2 class="section-title">Get In Touch</h2>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-info reveal-left">
+          <p class="contact-lead">
+            Ready to collaborate? Let's discuss how I can bring operational excellence 
+            and data-driven insights to your organization.
+          </p>
+
+          <div class="contact-items">
+            <div class="contact-item glass">
+              <div class="ci-icon">@</div>
+              <div class="ci-content">
+                <span class="ci-label">Email</span>
+                <a href="mailto:youssefhany2599@gmail.com" class="ci-value">youssefhany2599@gmail.com</a>
+              </div>
+              <button class="copy-btn" data-copy="youssefhany2599@gmail.com" title="Copy">⎘</button>
+            </div>
+            <div class="contact-item glass">
+              <div class="ci-icon">☎</div>
+              <div class="ci-content">
+                <span class="ci-label">Phone</span>
+                <a href="tel:+201144045252" class="ci-value">+20 1144045252 / 01037777931</a>
+              </div>
+              <button class="copy-btn" data-copy="+201144045252" title="Copy">⎘</button>
+            </div>
+            <div class="contact-item glass">
+              <div class="ci-icon wa-ci-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984a9.96 9.96 0 0 0 1.335 4.963L2 22l5.233-1.372a9.939 9.939 0 0 0 4.773 1.218h.004c5.505 0 9.988-4.478 9.989-9.984 0-2.669-1.037-5.176-2.927-7.067C17.185 2.905 14.68 2 12.012 2zm6.591 14.167c-.29.814-1.462 1.485-2.012 1.572-.5.078-1.15.145-3.32-.73-2.771-1.118-4.528-3.95-4.67-4.137-.14-.187-1.12-1.493-1.12-2.847 0-1.354.708-2.014.96-2.28a.82.82 0 0 1 .593-.277c.15 0 .3.007.43.014.136.007.319-.052.5-.052.19 0 .324.08.455.39.136.324.468 1.144.51 1.226.04.08.067.177.013.284-.054.106-.08.187-.16.284-.08.093-.16.182-.24.28-.088.087-.183.181-.077.362.106.18.472.78.89 1.152.538.48 1 .63 1.144.71.14.08.223.067.307-.03.084-.097.362-.424.458-.57.097-.147.195-.12.327-.07.135.05.856.404.996.474.14.07.234.105.27.164.03.06.03.35-.105.714z"/></svg>
+              </div>
+              <div class="ci-content">
+                <span class="ci-label">WhatsApp</span>
+                <a href="https://wa.me/201037777931" target="_blank" class="ci-value">+20 1037777931</a>
+              </div>
+              <button class="copy-btn" data-copy="+201037777931" title="Copy">⎘</button>
+            </div>
+            <div class="contact-item glass">
+              <div class="ci-icon">◎</div>
+              <div class="ci-content">
+                <span class="ci-label">Location</span>
+                <span class="ci-value">Ahmed Fahmy St., Al Waraq, Giza, Egypt</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="social-links">
+            <a href="https://wa.me/201037777931" class="social-link glass wa-social-link" target="_blank" title="WhatsApp">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984a9.96 9.96 0 0 0 1.335 4.963L2 22l5.233-1.372a9.939 9.939 0 0 0 4.773 1.218h.004c5.505 0 9.988-4.478 9.989-9.984 0-2.669-1.037-5.176-2.927-7.067C17.185 2.905 14.68 2 12.012 2zm6.591 14.167c-.29.814-1.462 1.485-2.012 1.572-.5.078-1.15.145-3.32-.73-2.771-1.118-4.528-3.95-4.67-4.137-.14-.187-1.12-1.493-1.12-2.847 0-1.354.708-2.014.96-2.28a.82.82 0 0 1 .593-.277c.15 0 .3.007.43.014.136.007.319-.052.5-.052.19 0 .324.08.455.39.136.324.468 1.144.51 1.226.04.08.067.177.013.284-.054.106-.08.187-.16.284-.08.093-.16.182-.24.28-.088.087-.183.181-.077.362.106.18.472.78.89 1.152.538.48 1 .63 1.144.71.14.08.223.067.307-.03.084-.097.362-.424.458-.57.097-.147.195-.12.327-.07.135.05.856.404.996.474.14.07.234.105.27.164.03.06.03.35-.105.714z"/></svg>
+            </a>
+            <a href="#" class="social-link glass" title="LinkedIn">in</a>
+            <a href="#" class="social-link glass" title="GitHub">gh</a>
+            <a href="#" class="social-link glass" title="Behance">be</a>
+            <a href="#" class="social-link glass" title="Portfolio">⊕</a>
+          </div>
+        </div>
+
+        <div class="contact-form-wrap reveal-right">
+          <form class="contact-form glass" id="contact-form">
+            <div class="form-group">
+              <input type="text" id="f-name" placeholder=" " required />
+              <label for="f-name">Your Name</label>
+              <span class="form-line"></span>
+            </div>
+            <div class="form-group">
+              <input type="email" id="f-email" placeholder=" " required />
+              <label for="f-email">Your Email</label>
+              <span class="form-line"></span>
+            </div>
+            <div class="form-group">
+              <input type="text" id="f-subject" placeholder=" " required />
+              <label for="f-subject">Subject</label>
+              <span class="form-line"></span>
+            </div>
+            <div class="form-group">
+              <textarea id="f-message" placeholder=" " rows="5" required></textarea>
+              <label for="f-message">Your Message</label>
+              <span class="form-line"></span>
+            </div>
+            <button type="submit" class="btn-primary form-submit">
+              <span>Send Message</span>
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h12M10 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">
+          <img src="profile.jpg" alt="Youssef Hany" class="footer-logo-img" />
+          <span class="footer-logo-text">Youssef Hany</span>
+        </div>
+        <p class="footer-copy">
+          © <span id="year"></span> Youssef Hany. Built with precision & purpose.
+        </p>
+        <div class="footer-socials">
+          <a href="#">LinkedIn</a>
+          <a href="#">GitHub</a>
+          <a href="#">Behance</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===================== BACK TO TOP ===================== -->
+  <button id="back-to-top" title="Back to top">↑</button>
+
+  <!-- ===================== FLOATING WHATSAPP ===================== -->
+  <a href="https://wa.me/201037777931" class="floating-whatsapp" target="_blank" title="Chat on WhatsApp">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984a9.96 9.96 0 0 0 1.335 4.963L2 22l5.233-1.372a9.939 9.939 0 0 0 4.773 1.218h.004c5.505 0 9.988-4.478 9.989-9.984 0-2.669-1.037-5.176-2.927-7.067C17.185 2.905 14.68 2 12.012 2zm6.591 14.167c-.29.814-1.462 1.485-2.012 1.572-.5.078-1.15.145-3.32-.73-2.771-1.118-4.528-3.95-4.67-4.137-.14-.187-1.12-1.493-1.12-2.847 0-1.354.708-2.014.96-2.28a.82.82 0 0 1 .593-.277c.15 0 .3.007.43.014.136.007.319-.052.5-.052.19 0 .324.08.455.39.136.324.468 1.144.51 1.226.04.08.067.177.013.284-.054.106-.08.187-.16.284-.08.093-.16.182-.24.28-.088.087-.183.181-.077.362.106.18.472.78.89 1.152.538.48 1 .63 1.144.71.14.08.223.067.307-.03.084-.097.362-.424.458-.57.097-.147.195-.12.327-.07.135.05.856.404.996.474.14.07.234.105.27.164.03.06.03.35-.105.714z"/></svg>
+  </a>
+
+  <!-- ===================== TOAST ===================== -->
+  <div id="toast-container"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
