@@ -499,7 +499,59 @@ function showToast(message, type = 'default') {
 /* ─── 24. PERFORMANCE: PASSIVE LISTENERS ─────────────────── */
 // All scroll listeners already marked {passive: true} above
 
-/* ─── 25. INIT LOG ───────────────────────────────────────── */
+/* ─── 25. NOVELUSION GALLERY SLIDER ─────────────────────── */
+(function initNovelusionGallery() {
+  const track = $('#novelusion-track');
+  const dots  = $$('#novelusion-dots .cert-gallery-dot');
+  if (!track || !dots.length) return;
+
+  const total = track.children.length;
+  let current = 0;
+  let autoTimer;
+
+  function goTo(idx) {
+    current = (idx + total) % total;
+    track.style.transform = `translateX(-${current * 100}%)`;
+    dots.forEach((d, i) => d.classList.toggle('active', i === current));
+  }
+
+  // Expose for inline onclick
+  window.novelusionGallery = function(dir) {
+    goTo(current + dir);
+    resetAuto();
+  };
+
+  // Dot click
+  dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => { goTo(i); resetAuto(); });
+  });
+
+  // Auto-play every 3s
+  function startAuto() {
+    autoTimer = setInterval(() => goTo(current + 1), 3000);
+  }
+  function resetAuto() {
+    clearInterval(autoTimer);
+    startAuto();
+  }
+
+  // Pause on hover
+  const gallery = $('#novelusion-gallery');
+  gallery?.addEventListener('mouseenter', () => clearInterval(autoTimer));
+  gallery?.addEventListener('mouseleave', () => startAuto());
+
+  // Touch / swipe support
+  let touchStartX = 0;
+  gallery?.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+  gallery?.addEventListener('touchend', e => {
+    const diff = touchStartX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 40) { goTo(current + (diff > 0 ? 1 : -1)); resetAuto(); }
+  }, { passive: true });
+
+  startAuto();
+})();
+
+/* ─── 26. INIT LOG ───────────────────────────────────────── */
 console.log(
   '%c[YH] Portfolio Loaded ✓',
   'color:#00d4ff;font-family:monospace;font-size:14px;font-weight:bold;'
