@@ -556,3 +556,410 @@ console.log(
   '%c[YH] Portfolio Loaded ✓',
   'color:#00d4ff;font-family:monospace;font-size:14px;font-weight:bold;'
 );
+
+/* ─── 27. 3D INTERACTIVE EXPERIENCE ─────────────────────── */
+(function init3DExperience() {
+  // 1. Generate ambient stars outside the card
+  const starsContainer = $('#ambient-stars');
+  if (starsContainer) {
+    starsContainer.innerHTML = '';
+    const count = 28;
+    for (let i = 0; i < count; i++) {
+      const star = document.createElement('div');
+      star.className = 'ambient-star-dot';
+      const side = Math.floor(Math.random() * 4);
+      let top, left;
+      if (side === 0) { top = Math.random() * 15 - 20; left = Math.random() * 100; }
+      else if (side === 1) { top = Math.random() * 100; left = Math.random() * 15 + 95; }
+      else if (side === 2) { top = Math.random() * 15 + 95; left = Math.random() * 100; }
+      else { top = Math.random() * 100; left = Math.random() * 15 - 15; }
+
+      star.style.top = top + '%';
+      star.style.left = left + '%';
+      star.style.animationDelay = (Math.random() * 3).toFixed(2) + 's';
+      star.style.animationDuration = (3 + Math.random() * 3).toFixed(2) + 's';
+      starsContainer.appendChild(star);
+    }
+  }
+
+  // 2. Initialize Advanced Three.js Sci-Fi Robot Model
+  const container = $('#interactive-3d-container');
+  const canvas = $('#robot-3d-canvas');
+  if (!container || !canvas || typeof THREE === 'undefined') return;
+
+  const width = container.clientWidth || 400;
+  const height = container.clientHeight || 380;
+
+  // Scene, Camera, Renderer
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
+  camera.position.set(0, 0, 5.5);
+
+  const renderer = new THREE.WebGLRenderer({
+    canvas: canvas,
+    alpha: true,
+    antialias: true,
+  });
+  renderer.setSize(width, height);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+  // Main Root Group
+  const robotRoot = new THREE.Group();
+  scene.add(robotRoot);
+
+  // Sub-groups for head and body to create natural multi-joint movement
+  const bodyGroup = new THREE.Group();
+  const headGroup = new THREE.Group();
+  headGroup.position.y = 0.76;
+  robotRoot.add(bodyGroup);
+  robotRoot.add(headGroup);
+
+  // --- Premium Materials ---
+  const darkArmorMat = new THREE.MeshStandardMaterial({
+    color: 0x070b14,
+    roughness: 0.18,
+    metalness: 0.92,
+  });
+
+  const gunmetalMat = new THREE.MeshStandardMaterial({
+    color: 0x1e293b,
+    roughness: 0.35,
+    metalness: 0.85,
+  });
+
+  const cyanEmissiveMat = new THREE.MeshStandardMaterial({
+    color: 0x22d3ee,
+    emissive: 0x22d3ee,
+    emissiveIntensity: 2.2,
+    roughness: 0.1,
+  });
+
+  const blueEmissiveMat = new THREE.MeshStandardMaterial({
+    color: 0x3b82f6,
+    emissive: 0x3b82f6,
+    emissiveIntensity: 1.8,
+    roughness: 0.1,
+  });
+
+  const haloRing1Mat = new THREE.MeshStandardMaterial({
+    color: 0x22d3ee,
+    emissive: 0x22d3ee,
+    emissiveIntensity: 2.0,
+    roughness: 0.1,
+    side: THREE.DoubleSide,
+  });
+
+  const haloRing2Mat = new THREE.MeshStandardMaterial({
+    color: 0x3b82f6,
+    emissive: 0x3b82f6,
+    emissiveIntensity: 1.8,
+    roughness: 0.1,
+    side: THREE.DoubleSide,
+  });
+
+  // --- 1. HEAD ASSEMBLY ---
+  // Main Helmet Shell
+  const helmetGeo = new THREE.SphereGeometry(0.4, 32, 32);
+  helmetGeo.scale(1, 0.84, 0.95);
+  const helmet = new THREE.Mesh(helmetGeo, darkArmorMat);
+  headGroup.add(helmet);
+
+  // Curved Visor
+  const visorBaseGeo = new THREE.BoxGeometry(0.56, 0.11, 0.34);
+  const visorMesh = new THREE.Mesh(visorBaseGeo, cyanEmissiveMat);
+  visorMesh.position.set(0, 0.02, 0.24);
+  headGroup.add(visorMesh);
+
+  // Dual Glowing Optical Eye Sensors
+  const eyeGeo = new THREE.SphereGeometry(0.045, 16, 16);
+  const leftEye = new THREE.Mesh(eyeGeo, cyanEmissiveMat);
+  leftEye.position.set(-0.14, 0.02, 0.38);
+  const rightEye = new THREE.Mesh(eyeGeo, cyanEmissiveMat);
+  rightEye.position.set(0.14, 0.02, 0.38);
+  headGroup.add(leftEye);
+  headGroup.add(rightEye);
+
+  // Side Ear Sensors (Cylinders + Glowing Cyan Rings)
+  const earGeo = new THREE.CylinderGeometry(0.11, 0.11, 0.1, 24);
+  const leftEar = new THREE.Mesh(earGeo, gunmetalMat);
+  leftEar.rotation.z = Math.PI / 2;
+  leftEar.position.set(-0.41, 0, 0);
+
+  const rightEar = new THREE.Mesh(earGeo, gunmetalMat);
+  rightEar.rotation.z = Math.PI / 2;
+  rightEar.position.set(0.41, 0, 0);
+
+  const earCapGeo = new THREE.TorusGeometry(0.09, 0.015, 16, 32);
+  const leftEarCap = new THREE.Mesh(earCapGeo, cyanEmissiveMat);
+  leftEarCap.rotation.y = Math.PI / 2;
+  leftEarCap.position.set(-0.46, 0, 0);
+
+  const rightEarCap = new THREE.Mesh(earCapGeo, cyanEmissiveMat);
+  rightEarCap.rotation.y = Math.PI / 2;
+  rightEarCap.position.set(0.46, 0, 0);
+
+  headGroup.add(leftEar);
+  headGroup.add(rightEar);
+  headGroup.add(leftEarCap);
+  headGroup.add(rightEarCap);
+
+  // Head Fin / Crown Accent
+  const finGeo = new THREE.ConeGeometry(0.06, 0.25, 4);
+  finGeo.rotateY(Math.PI / 4);
+  const fin = new THREE.Mesh(finGeo, blueEmissiveMat);
+  fin.position.set(0, 0.42, 0);
+  headGroup.add(fin);
+
+  // --- 2. NECK & TORSO ASSEMBLY ---
+  // Neck Collar Rings
+  const neckGeo = new THREE.CylinderGeometry(0.18, 0.22, 0.18, 16);
+  const neck = new THREE.Mesh(neckGeo, gunmetalMat);
+  neck.position.y = 0.58;
+  bodyGroup.add(neck);
+
+  // Main Torso Armor
+  const torsoGeo = new THREE.CylinderGeometry(0.46, 0.32, 0.9, 32);
+  const torso = new THREE.Mesh(torsoGeo, darkArmorMat);
+  bodyGroup.add(torso);
+
+  // Chest Armor Plates (Left & Right Overlay)
+  const plateGeo = new THREE.BoxGeometry(0.22, 0.5, 0.1);
+  const leftPlate = new THREE.Mesh(plateGeo, gunmetalMat);
+  leftPlate.position.set(-0.2, 0.1, 0.23);
+  leftPlate.rotation.y = -0.15;
+
+  const rightPlate = new THREE.Mesh(plateGeo, gunmetalMat);
+  rightPlate.position.set(0.2, 0.1, 0.23);
+  rightPlate.rotation.y = 0.15;
+
+  bodyGroup.add(leftPlate);
+  bodyGroup.add(rightPlate);
+
+  // Chest Reactor Housing Collar
+  const reactorCollarGeo = new THREE.TorusGeometry(0.22, 0.03, 16, 32);
+  const reactorCollar = new THREE.Mesh(reactorCollarGeo, gunmetalMat);
+  reactorCollar.position.set(0, 0.08, 0.26);
+  bodyGroup.add(reactorCollar);
+
+  // Glowing Reactor Sphere Core
+  const reactorCoreGeo = new THREE.SphereGeometry(0.18, 32, 32);
+  const reactorCore = new THREE.Mesh(reactorCoreGeo, cyanEmissiveMat);
+  reactorCore.position.set(0, 0.08, 0.28);
+  bodyGroup.add(reactorCore);
+
+  // Floating Rotating Crystal inside Core
+  const crystalGeo = new THREE.IcosahedronGeometry(0.1, 0);
+  const crystalCore = new THREE.Mesh(crystalGeo, blueEmissiveMat);
+  crystalCore.position.set(0, 0.08, 0.28);
+  bodyGroup.add(crystalCore);
+
+  // Intense Point Light emitting from Core
+  const reactorLight = new THREE.PointLight(0x22d3ee, 2.6, 7);
+  reactorLight.position.set(0, 0.08, 0.35);
+  bodyGroup.add(reactorLight);
+
+  // --- 3. DUAL ORBITING HALO RINGS ---
+  const ring1Geo = new THREE.TorusGeometry(0.56, 0.018, 16, 100);
+  const haloRing1 = new THREE.Mesh(ring1Geo, haloRing1Mat);
+  haloRing1.position.set(0, 0.08, 0.08);
+  haloRing1.rotation.x = Math.PI / 2.6;
+  bodyGroup.add(haloRing1);
+
+  const ring2Geo = new THREE.TorusGeometry(0.66, 0.014, 16, 100);
+  const haloRing2 = new THREE.Mesh(ring2Geo, haloRing2Mat);
+  haloRing2.position.set(0, 0.08, 0.08);
+  haloRing2.rotation.x = -Math.PI / 3;
+  haloRing2.rotation.y = Math.PI / 4;
+  bodyGroup.add(haloRing2);
+
+  // --- 4. SHOULDERS & FLOATING SATELLITE DRONES ---
+  const shoulderGeo = new THREE.SphereGeometry(0.18, 24, 24);
+  shoulderGeo.scale(1.2, 0.9, 1);
+  const leftShoulder = new THREE.Mesh(shoulderGeo, darkArmorMat);
+  leftShoulder.position.set(-0.54, 0.32, 0);
+  const rightShoulder = new THREE.Mesh(shoulderGeo, darkArmorMat);
+  rightShoulder.position.set(0.54, 0.32, 0);
+  bodyGroup.add(leftShoulder);
+  bodyGroup.add(rightShoulder);
+
+  // Floating Guardian Drones (Left & Right)
+  const droneGeo = new THREE.SphereGeometry(0.12, 16, 16);
+  const leftDrone = new THREE.Mesh(droneGeo, darkArmorMat);
+  const rightDrone = new THREE.Mesh(droneGeo, darkArmorMat);
+
+  const droneEyeGeo = new THREE.SphereGeometry(0.05, 12, 12);
+  const leftDroneEye = new THREE.Mesh(droneEyeGeo, cyanEmissiveMat);
+  leftDroneEye.position.z = 0.09;
+  leftDrone.add(leftDroneEye);
+
+  const rightDroneEye = new THREE.Mesh(droneEyeGeo, cyanEmissiveMat);
+  rightDroneEye.position.z = 0.09;
+  rightDrone.add(rightDroneEye);
+
+  const droneRingGeo = new THREE.TorusGeometry(0.16, 0.012, 12, 32);
+  const leftDroneRing = new THREE.Mesh(droneRingGeo, blueEmissiveMat);
+  leftDroneRing.rotation.x = Math.PI / 2;
+  leftDrone.add(leftDroneRing);
+
+  const rightDroneRing = new THREE.Mesh(droneRingGeo, blueEmissiveMat);
+  rightDroneRing.rotation.x = Math.PI / 2;
+  rightDrone.add(rightDroneRing);
+
+  leftDrone.position.set(-1.05, -0.1, 0.2);
+  rightDrone.position.set(1.05, -0.1, 0.2);
+
+  robotRoot.add(leftDrone);
+  robotRoot.add(rightDrone);
+
+  // --- 5. 3D COSMIC PARTICLE STARFIELD ---
+  const particleCount = 180;
+  const particleGeo = new THREE.BufferGeometry();
+  const particlePos = new Float32Array(particleCount * 3);
+  const particleColors = new Float32Array(particleCount * 3);
+
+  const color1 = new THREE.Color(0x22d3ee);
+  const color2 = new THREE.Color(0x3b82f6);
+
+  for (let i = 0; i < particleCount; i++) {
+    const idx = i * 3;
+    particlePos[idx]     = (Math.random() - 0.5) * 6.0;
+    particlePos[idx + 1] = (Math.random() - 0.5) * 6.0;
+    particlePos[idx + 2] = (Math.random() - 0.5) * 4.5;
+
+    const mixColor = Math.random() > 0.4 ? color1 : color2;
+    particleColors[idx]     = mixColor.r;
+    particleColors[idx + 1] = mixColor.g;
+    particleColors[idx + 2] = mixColor.b;
+  }
+
+  particleGeo.setAttribute('position', new THREE.BufferAttribute(particlePos, 3));
+  particleGeo.setAttribute('color', new THREE.BufferAttribute(particleColors, 3));
+
+  const particleMat = new THREE.PointsMaterial({
+    size: 0.038,
+    vertexColors: true,
+    transparent: true,
+    opacity: 0.85,
+    blending: THREE.AdditiveBlending,
+  });
+  const starfield = new THREE.Points(particleGeo, particleMat);
+  scene.add(starfield);
+
+  // --- 6. SCENE LIGHTING ---
+  const ambientLight = new THREE.AmbientLight(0x0a101f, 1.4);
+  scene.add(ambientLight);
+
+  const mainLight = new THREE.DirectionalLight(0x3b82f6, 1.8);
+  mainLight.position.set(4, 5, 4);
+  scene.add(mainLight);
+
+  const cyanRimLight = new THREE.DirectionalLight(0x22d3ee, 1.4);
+  cyanRimLight.position.set(-4, -2, -2);
+  scene.add(cyanRimLight);
+
+  const fillLight = new THREE.PointLight(0x3b82f6, 1.0, 8);
+  fillLight.position.set(0, -3, 3);
+  scene.add(fillLight);
+
+  // --- 7. MOUSE & TOUCH INTERACTIVITY ---
+  let mouseX = 0, mouseY = 0;
+  let isHovered = false;
+
+  container.addEventListener('mousemove', (e) => {
+    const rect = container.getBoundingClientRect();
+    mouseX = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+    mouseY = -(((e.clientY - rect.top) / rect.height) * 2 - 1);
+  });
+
+  container.addEventListener('mouseenter', () => { isHovered = true; });
+  container.addEventListener('mouseleave', () => {
+    isHovered = false;
+    mouseX = 0;
+    mouseY = 0;
+  });
+
+  container.addEventListener('touchmove', (e) => {
+    if (e.touches.length > 0) {
+      const rect = container.getBoundingClientRect();
+      mouseX = ((e.touches[0].clientX - rect.left) / rect.width) * 2 - 1;
+      mouseY = -(((e.touches[0].clientY - rect.top) / rect.height) * 2 - 1);
+      isHovered = true;
+    }
+  }, { passive: true });
+  container.addEventListener('touchend', () => { isHovered = false; mouseX = 0; mouseY = 0; });
+
+  // --- 8. ANIMATION LOOP ---
+  const clock = new THREE.Clock();
+
+  function animate() {
+    requestAnimationFrame(animate);
+    const elapsedTime = clock.getElapsedTime();
+
+    // Robot vertical floating motion
+    robotRoot.position.y = Math.sin(elapsedTime * 1.6) * 0.14;
+
+    // Head smooth tracking (natural multi-joint neck rotation)
+    const targetHeadY = mouseX * 0.75;
+    const targetHeadX = -mouseY * 0.45;
+    headGroup.rotation.y += (targetHeadY + Math.sin(elapsedTime * 0.8) * 0.08 - headGroup.rotation.y) * 0.08;
+    headGroup.rotation.x += (targetHeadX - headGroup.rotation.x) * 0.08;
+
+    // Body smooth rotation (lagging slightly behind head for organic mechanical feel)
+    const targetBodyY = mouseX * 0.45;
+    const targetBodyX = -mouseY * 0.25;
+    bodyGroup.rotation.y += (targetBodyY + Math.sin(elapsedTime * 0.4) * 0.05 - bodyGroup.rotation.y) * 0.05;
+    bodyGroup.rotation.x += (targetBodyX - bodyGroup.rotation.x) * 0.05;
+
+    // Internal Core Crystal spinning
+    crystalCore.rotation.x = elapsedTime * 2.2;
+    crystalCore.rotation.y = elapsedTime * 1.8;
+
+    // Halo Rings orbital rotation
+    haloRing1.rotation.z = elapsedTime * 1.1;
+    haloRing1.rotation.y = Math.sin(elapsedTime * 0.6) * 0.4;
+
+    haloRing2.rotation.z = -elapsedTime * 0.95;
+    haloRing2.rotation.x = -Math.PI / 3 + Math.cos(elapsedTime * 0.5) * 0.3;
+
+    // Guardian Drones anti-phase floating & ring spin
+    leftDrone.position.y = -0.1 + Math.sin(elapsedTime * 2.2) * 0.1;
+    rightDrone.position.y = -0.1 + Math.cos(elapsedTime * 2.2) * 0.1;
+
+    leftDrone.position.x = -1.05 + mouseX * 0.2;
+    rightDrone.position.x = 1.05 + mouseX * 0.2;
+
+    leftDroneRing.rotation.z = elapsedTime * 2.5;
+    rightDroneRing.rotation.z = -elapsedTime * 2.5;
+
+    // Starfield cosmic rotation
+    starfield.rotation.y = elapsedTime * 0.035;
+    starfield.rotation.x = Math.sin(elapsedTime * 0.02) * 0.08;
+
+    // Light & Glow surge on mouse hover
+    const targetLightIntensity = isHovered ? 4.8 : 2.6;
+    const targetEmissiveVal    = isHovered ? 3.6 : 2.2;
+
+    reactorLight.intensity += (targetLightIntensity - reactorLight.intensity) * 0.07;
+    cyanEmissiveMat.emissiveIntensity += (targetEmissiveVal - cyanEmissiveMat.emissiveIntensity) * 0.07;
+    blueEmissiveMat.emissiveIntensity += (targetEmissiveVal * 0.85 - blueEmissiveMat.emissiveIntensity) * 0.07;
+    haloRing1Mat.emissiveIntensity += (targetEmissiveVal - haloRing1Mat.emissiveIntensity) * 0.07;
+
+    renderer.render(scene, camera);
+  }
+  animate();
+
+  // Resize Handler
+  function onResize() {
+    if (!container) return;
+    const w = container.clientWidth;
+    const h = container.clientHeight;
+    if (w && h) {
+      camera.aspect = w / h;
+      camera.updateProjectionMatrix();
+      renderer.setSize(w, h);
+    }
+  }
+
+  window.addEventListener('resize', onResize, { passive: true });
+})();
+

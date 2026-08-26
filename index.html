@@ -67,6 +67,7 @@
       <ul class="nav-links" id="nav-links">
         <li><a href="#home" class="nav-link active">Home</a></li>
         <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#interactive" class="nav-link">3D Experience</a></li>
         <li><a href="#experience" class="nav-link">Experience</a></li>
         <li><a href="#education" class="nav-link">Education</a></li>
         <li><a href="#skills" class="nav-link">Skills</a></li>
@@ -233,6 +234,50 @@
             <span class="tag">Technical Support</span>
             <span class="tag">Freelance</span>
             <span class="tag">Vibe Coding</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== INTERACTIVE EXPERIENCE (3D) ===================== -->
+  <section id="interactive" class="interactive-experience-section section">
+    <div class="container">
+      <div class="interactive-outer-wrap">
+        <!-- Floating star particles scattered around the outside of the card -->
+        <div class="ambient-stars-container" id="ambient-stars"></div>
+
+        <div class="interactive-card reveal-up">
+          <div class="interactive-grid">
+            <!-- Left Column: Text -->
+            <div class="interactive-text-col">
+              <span class="interactive-label">// Interactive Experience</span>
+              <h2 class="interactive-heading">
+                Fusing<br />
+                Code &amp;<br />
+                Dimensions
+              </h2>
+              <p class="interactive-desc">
+                Bridging technical operations, business intelligence, and modern web application development into seamless, responsive 3D interactive digital environments.
+              </p>
+              <div class="interactive-badge-wrap">
+                <div class="core-active-pill">
+                  <span class="pulse-cyan-dot"></span>
+                  <span class="pill-text">Core Active</span>
+                </div>
+              </div>
+              <div class="interactive-hint">
+                <span class="hint-star">✦</span> Move cursor over the model to control rotation &amp; lighting
+              </div>
+            </div>
+
+            <!-- Right Column: 3D Model -->
+            <div class="interactive-3d-col" id="interactive-3d-container">
+              <!-- Soft circular cyan glow behind the model -->
+              <div class="model-glow-behind"></div>
+              <!-- Canvas for Three.js 3D Robot -->
+              <canvas id="robot-3d-canvas"></canvas>
+            </div>
           </div>
         </div>
       </div>
@@ -1058,6 +1103,8 @@
   <!-- ===================== TOAST ===================== -->
   <div id="toast-container"></div>
 
+  <!-- Three.js Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="script.js"></script>
 </body>
 
