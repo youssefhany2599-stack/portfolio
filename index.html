@@ -29,11 +29,11 @@
   <!-- Theme -->
   <meta name="theme-color" content="#060810" />
 
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css?v=20260902_09" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap"
     rel="stylesheet" />
 </head>
 
@@ -46,7 +46,7 @@
       <div class="preloader-bar">
         <div class="preloader-fill"></div>
       </div>
-      <div class="preloader-text">Initializing Systems<span class="dots"></span></div>
+      <div class="preloader-text">Welcome to my world<span class="dots"></span></div>
     </div>
   </div>
 
@@ -70,12 +70,14 @@
         <li><a href="#interactive" class="nav-link">3D Experience</a></li>
         <li><a href="#experience" class="nav-link">Experience</a></li>
         <li><a href="#education" class="nav-link">Education</a></li>
-        <li><a href="#skills" class="nav-link">Skills</a></li>
         <li><a href="#projects" class="nav-link">Projects</a></li>
         <li><a href="#certifications" class="nav-link">Certifications</a></li>
         <li><a href="#contact" class="nav-link">Contact</a></li>
       </ul>
       <div class="nav-right">
+        <button id="sound-toggle" class="sound-toggle-btn" title="Toggle UI Sound Effects">
+          <span class="sound-icon">🔊</span>
+        </button>
         <button id="theme-toggle" title="Toggle theme">
           <span class="theme-icon">◐</span>
         </button>
@@ -99,10 +101,21 @@
             Available for opportunities
           </div>
 
-          <h1 class="hero-name reveal-up delay-1">
-            <span class="name-line">Youssef</span>
-            <span class="name-line accent">Hany</span>
-          </h1>
+          <div class="hero-name-row">
+            <h1 class="hero-name reveal-up delay-1">
+              <span class="name-line">Youssef</span>
+              <span class="name-line accent">Hany</span>
+            </h1>
+
+            <div class="hero-mobile-avatar reveal-right">
+              <img src="profile.jpg" alt="Youssef Hany" class="mobile-avatar-img" />
+              <div class="mobile-avatar-ring"></div>
+              <div class="m-orbit-badge m-analysis" title="Analysis">📈</div>
+              <div class="m-orbit-badge m-bi" title="Power BI">📊</div>
+              <div class="m-orbit-badge m-excel" title="Excel">📑</div>
+              <div class="m-orbit-badge m-ai" title="AI">✨</div>
+            </div>
+          </div>
 
           <div class="hero-title reveal-up delay-2">
             <span class="typing-text" id="typing-text"></span>
@@ -166,6 +179,24 @@
             <div class="hero-profile-ring ring-1"></div>
             <div class="hero-profile-ring ring-2"></div>
             <div class="hero-profile-ring ring-3"></div>
+
+            <!-- Orbiting Tech Badges -->
+            <div class="orbit-badge b-analysis" title="Data & Business Analysis">
+              <span class="ob-icon">📈</span>
+              <span class="ob-text">Analysis</span>
+            </div>
+            <div class="orbit-badge b-bi" title="Power BI Dashboards">
+              <span class="ob-icon">📊</span>
+              <span class="ob-text">Power BI</span>
+            </div>
+            <div class="orbit-badge b-excel" title="Excel & Automation">
+              <span class="ob-icon">📑</span>
+              <span class="ob-text">Excel</span>
+            </div>
+            <div class="orbit-badge b-ai" title="Artificial Intelligence & Automation">
+              <span class="ob-icon">✨</span>
+              <span class="ob-text">AI</span>
+            </div>
           </div>
         </div>
       </div>
@@ -240,6 +271,8 @@
     </div>
   </section>
 
+
+
   <!-- ===================== INTERACTIVE EXPERIENCE (3D) ===================== -->
   <section id="interactive" class="interactive-experience-section section">
     <div class="container">
@@ -260,14 +293,27 @@
               <p class="interactive-desc">
                 Bridging technical operations, business intelligence, and modern web application development into seamless, responsive 3D interactive digital environments.
               </p>
-              <div class="interactive-badge-wrap">
-                <div class="core-active-pill">
-                  <span class="pulse-cyan-dot"></span>
-                  <span class="pill-text">Core Active</span>
+              <!-- Live Code / Telemetry Terminal Screen (Matching Image 1) -->
+              <div class="telemetry-terminal glass">
+                <div class="terminal-header">
+                  <div class="terminal-dots">
+                    <span class="t-dot red"></span>
+                    <span class="t-dot yellow"></span>
+                    <span class="t-dot green"></span>
+                  </div>
+                  <span class="terminal-title">LIVE TELEMETRY &amp; AUTOMATION STREAM</span>
+                </div>
+                <div class="terminal-body" id="telemetry-log">
+                  <div class="log-line"><span class="log-time">[02:18:02]</span> <span class="log-info">INFO</span> &gt; Vibe Coding Framework: Zero Vulnerabilities</div>
+                  <div class="log-line"><span class="log-time">[02:18:06]</span> <span class="log-ok">OK</span> &gt; SQL ETL Pipeline: 100% Synced</div>
+                  <div class="log-line"><span class="log-time">[02:18:11]</span> <span class="log-ok">OK</span> &gt; D2C Store Web Vitals: 99.8% Speed Score</div>
+                  <div class="log-line"><span class="log-time">[02:18:15]</span> <span class="log-info">INFO</span> &gt; Field Operations Engine: 115+ Nodes Verified</div>
+                  <div class="log-line"><span class="log-time">[02:18:20]</span> <span class="log-ok">OK</span> &gt; Google Apps Script Auto-Batch: Active</div>
                 </div>
               </div>
+
               <div class="interactive-hint">
-                <span class="hint-star">✦</span> Move cursor over the model to control rotation &amp; lighting
+                <span class="hint-star">✦</span> Move cursor over the mech model to trigger kinetic tracking
               </div>
             </div>
 
@@ -518,181 +564,6 @@
     </div>
   </section>
 
-  <!-- ===================== SKILLS ===================== -->
-  <section id="skills" class="skills section">
-    <div class="container">
-      <div class="section-header reveal-up">
-        <span class="section-tag">// 03 — Skills</span>
-        <h2 class="section-title">Technical Arsenal</h2>
-      </div>
-
-      <div class="skills-grid">
-
-        <div class="skill-category reveal-up delay-1 glass">
-          <div class="sc-header">
-            <div class="sc-icon">◈</div>
-            <h3>Data & BI</h3>
-          </div>
-          <div class="skill-bars">
-            <div class="skill-bar-wrap">
-              <div class="sb-meta"><span>SQL</span><span>88%</span></div>
-              <div class="skill-track">
-                <div class="skill-fill" data-width="88"></div>
-              </div>
-            </div>
-            <div class="skill-bar-wrap">
-              <div class="sb-meta"><span>Business Intelligence</span><span>82%</span></div>
-              <div class="skill-track">
-                <div class="skill-fill" data-width="82"></div>
-              </div>
-            </div>
-            <div class="skill-bar-wrap">
-              <div class="sb-meta"><span>Data Analysis</span><span>85%</span></div>
-              <div class="skill-track">
-                <div class="skill-fill" data-width="85"></div>
-              </div>
-            </div>
-            <div class="skill-bar-wrap">
-              <div class="sb-meta"><span>Data Visualization</span><span>78%</span></div>
-              <div class="skill-track">
-                <div class="skill-fill" data-width="78"></div>
-              </div>
-            </div>
-            <div class="skill-bar-wrap">
-              <div class="sb-meta"><span>Reporting Systems</span><span>90%</span></div>
-              <div class="skill-track">
-                <div class="skill-fill" data-width="90"></div>
-              </div>
-            </div>
-            <div class="skill-bar-wrap">
-              <div class="sb-meta"><span>KPI Analysis</span><span>87%</span></div>
-              <div class="skill-track">
-                <div class="skill-fill" data-width="87"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="skill-category reveal-up delay-2 glass">
-          <div class="sc-header">
-            <div class="sc-icon">⬡</div>
-            <h3>Technical Operations</h3>
-          </div>
-          <div class="skill-bars">
-            <div class="skill-bar-wrap">
-              <div class="sb-meta"><span>Process Optimization</span><span>92%</span></div>
-              <div class="skill-track">
-                <div class="skill-fill" data-width="92"></div>
-              </div>
-            </div>
-            <div class="skill-bar-wrap">
-              <div class="sb-meta"><span>Workflow Management</span><span>90%</span></div>
-              <div class="skill-track">
-                <div class="skill-fill" data-width="90"></div>
-              </div>
-            </div>
-            <div class="skill-bar-wrap">
-              <div class="sb-meta"><span>Operations Management</span><span>88%</span></div>
-              <div class="skill-track">
-                <div class="skill-fill" data-width="88"></div>
-              </div>
-            </div>
-            <div class="skill-bar-wrap">
-              <div class="sb-meta"><span>Troubleshooting</span><span>85%</span></div>
-              <div class="skill-track">
-                <div class="skill-fill" data-width="85"></div>
-              </div>
-            </div>
-            <div class="skill-bar-wrap">
-              <div class="sb-meta"><span>Cross-functional Coord.</span><span>83%</span></div>
-              <div class="skill-track">
-                <div class="skill-fill" data-width="83"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="skill-category reveal-up delay-3 glass">
-          <div class="sc-header">
-            <div class="sc-icon">◎</div>
-            <h3>Web & E-commerce</h3>
-          </div>
-          <div class="skill-bars">
-            <div class="skill-bar-wrap">
-              <div class="sb-meta"><span>Website Development</span><span>80%</span></div>
-              <div class="skill-track">
-                <div class="skill-fill" data-width="80"></div>
-              </div>
-            </div>
-            <div class="skill-bar-wrap">
-              <div class="sb-meta"><span>WordPress</span><span>82%</span></div>
-              <div class="skill-track">
-                <div class="skill-fill" data-width="82"></div>
-              </div>
-            </div>
-            <div class="skill-bar-wrap">
-              <div class="sb-meta"><span>Shopify</span><span>78%</span></div>
-              <div class="skill-track">
-                <div class="skill-fill" data-width="78"></div>
-              </div>
-            </div>
-            <div class="skill-bar-wrap">
-              <div class="sb-meta"><span>Hosting & Domains</span><span>85%</span></div>
-              <div class="skill-track">
-                <div class="skill-fill" data-width="85"></div>
-              </div>
-            </div>
-            <div class="skill-bar-wrap">
-              <div class="sb-meta"><span>SSL & Security</span><span>80%</span></div>
-              <div class="skill-track">
-                <div class="skill-fill" data-width="80"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="skill-category reveal-up delay-4 glass">
-          <div class="sc-header">
-            <div class="sc-icon">▣</div>
-            <h3>Productivity & Tools</h3>
-          </div>
-          <div class="skill-bars">
-            <div class="skill-bar-wrap">
-              <div class="sb-meta"><span>Excel</span><span>93%</span></div>
-              <div class="skill-track">
-                <div class="skill-fill" data-width="93"></div>
-              </div>
-            </div>
-            <div class="skill-bar-wrap">
-              <div class="sb-meta"><span>PowerPoint</span><span>88%</span></div>
-              <div class="skill-track">
-                <div class="skill-fill" data-width="88"></div>
-              </div>
-            </div>
-            <div class="skill-bar-wrap">
-              <div class="sb-meta"><span>Google Sheets</span><span>90%</span></div>
-              <div class="skill-track">
-                <div class="skill-fill" data-width="90"></div>
-              </div>
-            </div>
-            <div class="skill-bar-wrap">
-              <div class="sb-meta"><span>AI Tools</span><span>85%</span></div>
-              <div class="skill-track">
-                <div class="skill-fill" data-width="85"></div>
-              </div>
-            </div>
-            <div class="skill-bar-wrap">
-              <div class="sb-meta"><span>Documentation</span><span>88%</span></div>
-              <div class="skill-track">
-                <div class="skill-fill" data-width="88"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
 
   <!-- ===================== PROJECTS ===================== -->
   <section id="projects" class="projects section">
@@ -702,204 +573,68 @@
         <h2 class="section-title">Featured Work</h2>
       </div>
 
-      <div class="filter-bar reveal-up">
-        <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="operations">Operations</button>
-        <button class="filter-btn" data-filter="ecommerce">E-commerce</button>
-        <button class="filter-btn" data-filter="bi">BI & Data</button>
-        <button class="filter-btn" data-filter="web">Web</button>
-      </div>
-
       <div class="projects-grid" id="projects-grid">
 
-        <div class="project-card glass reveal-up" data-category="ecommerce web operations">
-          <div class="pc-top">
-            <div class="pc-icon">🛒</div>
-            <div class="pc-links">
-              <a href="#" class="pc-link" title="View Project">↗</a>
+        <!-- Project 1: SmartDash Pro Analytics Platform -->
+        <div class="project-card glass reveal-up" data-category="analytics ai">
+          <div class="cert-gallery" id="smartdash-gallery">
+            <div class="cert-gallery-track" id="smartdash-track">
+              <img src="Certlflcations/projects/SmartDash Pro Analytics Platform/1.jpg" alt="SmartDash 1" class="cert-gallery-img" />
+              <img src="Certlflcations/projects/SmartDash Pro Analytics Platform/2.png" alt="SmartDash 2" class="cert-gallery-img" />
+              <img src="Certlflcations/projects/SmartDash Pro Analytics Platform/3.jpg" alt="SmartDash 3" class="cert-gallery-img" />
+            </div>
+            <button class="cert-gallery-btn prev" onclick="smartdashGallery(-1)" aria-label="Previous">&#8249;</button>
+            <button class="cert-gallery-btn next" onclick="smartdashGallery(1)" aria-label="Next">&#8250;</button>
+            <div class="cert-gallery-dots" id="smartdash-dots">
+              <span class="cert-gallery-dot active"></span>
+              <span class="cert-gallery-dot"></span>
+              <span class="cert-gallery-dot"></span>
             </div>
           </div>
-          <h3>E-commerce Operations & Digital Infrastructure</h3>
-          <p>Managing technical and operational workflows for an E-commerce business including hosting, website
-            management, security, and customer experience optimization.</p>
-          <div class="pc-features">
-            <span>Website Management</span>
-            <span>Hosting Setup</span>
-            <span>SSL Implementation</span>
-            <span>Technical Troubleshooting</span>
-            <span>Store Operations</span>
-            <span>Customer Workflow</span>
-          </div>
+          <h3>SmartDash Pro — Analytics Platform</h3>
+          <p>Full-featured client-side business intelligence analytics tool. Processes Excel, CSV, JSON data with automated stat summaries, SQL query engine, and AI Assistant "CUBE" 🤖.</p>
+          <button class="btn-project-details" data-project-id="smartdash">
+            <span>View Ticket Details</span>
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+              <path d="M6 12l4-4-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
         </div>
 
-        <div class="project-card glass reveal-up delay-1" data-category="bi operations">
-          <div class="pc-top">
-            <div class="pc-icon">📊</div>
-            <div class="pc-links">
-              <a href="#" class="pc-link" title="View Project">↗</a>
+        <!-- Project 2: Field Operations Control Center -->
+        <div class="project-card glass reveal-up delay-1" data-category="operations automation">
+          <div class="cert-gallery" id="google-gallery">
+            <div class="cert-gallery-track" id="google-track">
+              <img src="Certlflcations/projects/How to Build a Professional Dashboard Using Google Sheets + Google Apps Script/1.jpg" alt="Field Operations 1" class="cert-gallery-img" />
+              <img src="Certlflcations/projects/How to Build a Professional Dashboard Using Google Sheets + Google Apps Script/2.jpg" alt="Field Operations 2" class="cert-gallery-img" />
+            </div>
+            <button class="cert-gallery-btn prev" onclick="googleGallery(-1)" aria-label="Previous">&#8249;</button>
+            <button class="cert-gallery-btn next" onclick="googleGallery(1)" aria-label="Next">&#8250;</button>
+            <div class="cert-gallery-dots" id="google-dots">
+              <span class="cert-gallery-dot active"></span>
+              <span class="cert-gallery-dot"></span>
             </div>
           </div>
-          <h3>Operational Reporting & KPI Dashboard</h3>
-          <p>Designed and built structured reporting systems and KPI dashboards to monitor operational performance and
-            drive data-informed business decisions.</p>
-          <div class="pc-features">
-            <span>Excel Dashboards</span>
-            <span>KPI Monitoring</span>
-            <span>Data Analysis</span>
-            <span>BI Reports</span>
-            <span>Process Tracking</span>
-          </div>
+          <h3>Field Operations Control Center</h3>
+          <p>Centralized web control center built with Google Sheets database backend + Apps Script ETL automation + HTML/JS interactive dashboard with Ask AI data querying.</p>
+          <button class="btn-project-details" data-project-id="google-sheets-apps-script">
+            <span>View Ticket Details</span>
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+              <path d="M6 12l4-4-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
         </div>
 
-        <div class="project-card glass reveal-up delay-2" data-category="operations">
-          <div class="pc-top">
-            <div class="pc-icon">⚙️</div>
-            <div class="pc-links">
-              <a href="#" class="pc-link" title="View Project">↗</a>
-            </div>
-          </div>
-          <h3>Workflow Optimization & Process Engineering</h3>
-          <p>Analyzed and restructured operational workflows to reduce errors, improve team coordination, and enhance
-            overall execution quality across departments.</p>
-          <div class="pc-features">
-            <span>Process Mapping</span>
-            <span>Error Reduction</span>
-            <span>Team Coordination</span>
-            <span>SOP Development</span>
-            <span>Performance Improvement</span>
-          </div>
-        </div>
-
-        <div class="project-card glass reveal-up delay-3" data-category="web">
-          <div class="pc-top">
-            <div class="pc-icon">🌐</div>
-            <div class="pc-links">
-              <a href="#" class="pc-link" title="View Project">↗</a>
-            </div>
-          </div>
-          <h3>Digital Infrastructure Management</h3>
-          <p>End-to-end management of digital infrastructure including domain configuration, SSL certificates, hosting
-            optimization, and website security hardening.</p>
-          <div class="pc-features">
-            <span>Domain Management</span>
-            <span>SSL Certificates</span>
-            <span>Hosting Optimization</span>
-            <span>Security Setup</span>
-            <span>Uptime Monitoring</span>
-          </div>
-        </div>
-
-        <div class="project-card glass reveal-up delay-4" data-category="bi">
-          <div class="pc-top">
-            <div class="pc-icon">🔍</div>
-            <div class="pc-links">
-              <a href="#" class="pc-link" title="View Project">↗</a>
-            </div>
-          </div>
-          <h3>SQL Data Analysis & Reporting</h3>
-          <p>Developed SQL queries and data analysis pipelines to extract operational insights, automate reporting, and
-            support data-driven decision making.</p>
-          <div class="pc-features">
-            <span>SQL Queries</span>
-            <span>Data Extraction</span>
-            <span>Report Automation</span>
-            <span>Insight Generation</span>
-            <span>Data Cleansing</span>
-          </div>
-        </div>
-
-        <div class="project-card glass reveal-up delay-5" data-category="ecommerce operations">
-          <div class="pc-top">
-            <div class="pc-icon">🚀</div>
-            <div class="pc-links">
-              <a href="#" class="pc-link" title="View Project">↗</a>
-            </div>
-          </div>
-          <h3>Business Operations Scaling System</h3>
-          <p>Built scalable operational systems combining technology tools, documentation, and workflow structures to
-            support business growth and team efficiency.</p>
-          <div class="pc-features">
-            <span>Scalable Systems</span>
-            <span>Documentation</span>
-            <span>AI Tools Integration</span>
-            <span>Growth Support</span>
-            <span>Efficiency Metrics</span>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ===================== CERTIFICATIONS ===================== -->
-  <section id="certifications" class="certifications section">
-    <div class="container">
-      <div class="section-header reveal-up">
-        <span class="section-tag">// 05 — Certifications</span>
-        <h2 class="section-title">Projects &amp; Certifications</h2>
-      </div>
-
-      <div class="certs-grid">
-
-        <!-- CCNA Exploration — full image card -->
-        <div class="cert-card cert-img-card glass reveal-up delay-1">
-          <div class="cert-ribbon">Certificate</div>
-          <img src="Certlflcations/CCNA Exploration.jpg" alt="CCNA Exploration Certificate" class="cert-full-img"
-            loading="lazy" />
-          <div class="cert-full-overlay">
-            <span class="cert-badge academy">Technical</span>
-            <h3 class="cert-full-title">CCNA Exploration</h3>
-            <p class="cert-full-sub">International Academy &middot; 2019</p>
-          </div>
-        </div>
-
-        <!-- Security Award Certificate — full image card -->
-        <div class="cert-card cert-img-card glass reveal-up delay-2">
-          <div class="cert-ribbon award">Award</div>
-          <img src="Certlflcations/Security Award Certificate.jpg" alt="Security Award Certificate"
-            class="cert-full-img" loading="lazy" />
-          <div class="cert-full-overlay">
-            <span class="cert-badge award-badge">Security Excellence</span>
-            <h3 class="cert-full-title">Security Award Certificate</h3>
-            <p class="cert-full-sub">Cairo Metro Line 3 JV &middot; 2024</p>
-          </div>
-        </div>
-
-        <!-- G4S Badge — full image card -->
-        <div class="cert-card cert-img-card glass reveal-up delay-3">
-          <div class="cert-ribbon g4s">Badge</div>
-          <img src="Certlflcations/G4S Supervisor &mdash; Cairo Metro Line 3.jpg" alt="G4S Supervisor Badge"
-            class="cert-full-img" loading="lazy" />
-          <div class="cert-full-overlay">
-            <span class="cert-badge g4s-badge">G4S Certified</span>
-            <h3 class="cert-full-title">G4S Supervisor</h3>
-            <p class="cert-full-sub">Cairo Metro Line 3 &middot; Jan 2025</p>
-          </div>
-        </div>
-
-        <!-- SmartDash Pro — full image card -->
-        <div class="cert-card cert-img-card glass reveal-up delay-4">
-          <div class="cert-ribbon project">Project</div>
-          <img src="Certlflcations/SmartDash Pro Analytics Platform.png" alt="SmartDash Pro" class="cert-full-img"
-            loading="lazy" />
-          <div class="cert-full-overlay">
-            <span class="cert-badge project-badge">Built by Me</span>
-            <h3 class="cert-full-title">SmartDash Pro</h3>
-            <p class="cert-full-sub">Analytics Platform &middot; 2025</p>
-          </div>
-        </div>
-
-        <!-- Novelusion — gallery full-image card -->
-        <div class="cert-card cert-img-card cert-gallery-card glass reveal-up delay-5">
-          <div class="cert-ribbon novelusion">Founder</div>
+        <!-- Project 3: Novelusion -->
+        <div class="project-card glass reveal-up delay-2" data-category="ecommerce web">
           <div class="cert-gallery" id="novelusion-gallery">
             <div class="cert-gallery-track" id="novelusion-track">
-              <img src="Certlflcations/Novelusion/1.png" alt="Novelusion Homepage" class="cert-gallery-img" />
-              <img src="Certlflcations/Novelusion/2.png" alt="Novelusion Products" class="cert-gallery-img" />
-              <img src="Certlflcations/Novelusion/3.png" alt="Novelusion Certified" class="cert-gallery-img" />
-              <img src="Certlflcations/Novelusion/4.png" alt="Novelusion Compare" class="cert-gallery-img" />
-              <img src="Certlflcations/Novelusion/5.png" alt="Novelusion Reviews" class="cert-gallery-img" />
-              <img src="Certlflcations/Novelusion/6.png" alt="Novelusion More" class="cert-gallery-img" />
+              <img src="Certlflcations/projects/Novelusion/1.png" alt="Novelusion 1" class="cert-gallery-img" />
+              <img src="Certlflcations/projects/Novelusion/2.png" alt="Novelusion 2" class="cert-gallery-img" />
+              <img src="Certlflcations/projects/Novelusion/3.png" alt="Novelusion 3" class="cert-gallery-img" />
+              <img src="Certlflcations/projects/Novelusion/4.png" alt="Novelusion 4" class="cert-gallery-img" />
+              <img src="Certlflcations/projects/Novelusion/5.png" alt="Novelusion 5" class="cert-gallery-img" />
+              <img src="Certlflcations/projects/Novelusion/6.png" alt="Novelusion 6" class="cert-gallery-img" />
             </div>
             <button class="cert-gallery-btn prev" onclick="novelusionGallery(-1)" aria-label="Previous">&#8249;</button>
             <button class="cert-gallery-btn next" onclick="novelusionGallery(1)" aria-label="Next">&#8250;</button>
@@ -912,11 +647,76 @@
               <span class="cert-gallery-dot"></span>
             </div>
           </div>
-          <div class="cert-full-overlay">
-            <span class="cert-badge novelusion-badge">E-commerce</span>
-            <h3 class="cert-full-title">Novelusion &mdash; E-commerce Brand</h3>
-            <p class="cert-full-sub">TRENDOPIA LTD &middot; UK &middot; 2024&ndash;Present</p>
+          <h3>Novelusion — E-commerce &amp; Web Platform</h3>
+          <p>International D2C brand under TRENDOPIA LTD (UK) with custom store development, payment gateway integration, SSL security, and Excel automation.</p>
+          <button class="btn-project-details" data-project-id="novelusion">
+            <span>View Ticket Details</span>
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+              <path d="M6 12l4-4-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CERTIFICATIONS ===================== -->
+  <section id="certifications" class="certifications section">
+    <div class="container">
+      <div class="section-header reveal-up">
+        <span class="section-tag">// 05 — Certifications</span>
+        <h2 class="section-title">Certifications &amp; Achievements</h2>
+      </div>
+
+      <div class="certs-grid">
+
+        <!-- CCNA Exploration -->
+        <div class="cert-card glass reveal-up delay-1">
+          <div class="cert-card-img-wrap">
+            <span class="cert-ribbon-badge academy">CERTIFICATE</span>
+            <img src="Certlflcations/CCNA Exploration.jpg" alt="CCNA Exploration" class="cert-card-img" />
           </div>
+          <h3>CCNA Exploration</h3>
+          <p>Certified in Network Fundamentals &amp; Routing Protocols at International Academy (2019).</p>
+          <button class="btn-project-details" data-project-id="ccna">
+            <span>View Certificate Details</span>
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+              <path d="M6 12l4-4-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Security Award Certificate -->
+        <div class="cert-card glass reveal-up delay-2">
+          <div class="cert-card-img-wrap">
+            <span class="cert-ribbon-badge award">AWARD</span>
+            <img src="Certlflcations/Security Award Certificate.jpg" alt="Security Award Certificate" class="cert-card-img" />
+          </div>
+          <h3>Security Award Certificate</h3>
+          <p>Awarded for Professionalism, Extreme Vigilance &amp; Emergency Response — Cairo Metro Line 3 JV (2024).</p>
+          <button class="btn-project-details" data-project-id="security-award">
+            <span>View Certificate Details</span>
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+              <path d="M6 12l4-4-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+
+        <!-- G4S Supervisor -->
+        <div class="cert-card glass reveal-up delay-3">
+          <div class="cert-card-img-wrap">
+            <span class="cert-ribbon-badge g4s">BADGE</span>
+            <img src="Certlflcations/G4S Supervisor &mdash; Cairo Metro Line 3.jpg" alt="G4S Supervisor Badge" class="cert-card-img" />
+          </div>
+          <h3>G4S Supervisor</h3>
+          <p>Official Supervisory Qualification — G4S Cairo Metro Line 3 Phase 3 (Valid through Jan 2026).</p>
+          <button class="btn-project-details" data-project-id="g4s-supervisor">
+            <span>View Certificate Details</span>
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+              <path d="M6 12l4-4-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
         </div>
 
       </div>
@@ -925,7 +725,7 @@
   <!-- ===================== TOOLS MARQUEE ===================== -->
   <section class="tools-marquee-section section">
     <div class="section-header reveal-up">
-      <span class="section-tag">// 07 — Tools</span>
+      <span class="section-tag">// 06 — Tools</span>
       <h2 class="section-title">Tech Stack</h2>
     </div>
     <div class="marquee-wrapper">
@@ -960,7 +760,7 @@
   <section id="contact" class="contact section">
     <div class="container">
       <div class="section-header reveal-up">
-        <span class="section-tag">// 08 — Contact</span>
+        <span class="section-tag">// 07 — Contact</span>
         <h2 class="section-title">Get In Touch</h2>
       </div>
 
@@ -1100,12 +900,20 @@
     </svg>
   </a>
 
+  <!-- ===================== PROJECT DETAILS MODAL ===================== -->
+  <div id="project-modal" class="project-modal-overlay" aria-hidden="true">
+    <div class="project-modal-card glass">
+      <button class="project-modal-close" id="modal-close-btn" aria-label="Close modal">&times;</button>
+      <div class="project-modal-body" id="modal-body"></div>
+    </div>
+  </div>
+
   <!-- ===================== TOAST ===================== -->
   <div id="toast-container"></div>
 
   <!-- Three.js Library -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <script src="script.js"></script>
+  <script src="script.js?v=20260902_09"></script>
 </body>
 
 </html>

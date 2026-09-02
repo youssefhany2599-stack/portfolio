@@ -1,0 +1,12 @@
+Smart Dashboard Pro
+_______________
+A fully client-side, single-file HTML data analytics tool — no server required. Upload any file (Excel, CSV, TSV, JSON, ODS) and it automatically analyzes it: detects each column's type (numeric/date/categorical/text), computes stats (min/max/avg/nulls), and auto-generates insights and charts (Line, Pie, Bar, Histogram) based on the data's shape.
+It also includes:
+A fully interactive table (search, sort, pagination)
+A SQL Query engine and Formula Builder for creating derived columns
+A precision analysis engine (DataParse) that handles Arabic-Indic numerals, outlier detection, and correlations
+Export to PowerPoint slides
+An AI chat (Gemini/Claude/OpenAI/OpenRouter) that talks directly about your data, powered by a mascot assistant named "CUBE" 🤖
+Everything stays in the browser — no data ever leaves your device except when you explicitly trigger the AI chat (and even then, only a 15-row sample is sent)
+
+Need this tool? DM me and I’ll send it over.

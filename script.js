@@ -245,10 +245,21 @@ function initScrollReveal() {
         obs.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.12 });
+  }, { threshold: 0.05 });
 
-  targets.forEach(t => obs.observe(t));
+  targets.forEach(t => {
+    // If element is already in viewport, reveal immediately
+    const rect = t.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      t.classList.add('visible');
+    } else {
+      obs.observe(t);
+    }
+  });
 }
+
+document.addEventListener('DOMContentLoaded', initScrollReveal);
+setTimeout(initScrollReveal, 300);
 
 /* ─── 9. ANIMATED COUNTERS ───────────────────────────────── */
 function initCounters() {
@@ -434,12 +445,18 @@ function showToast(message, type = 'default') {
   const toast = document.createElement('div');
   toast.className = `toast ${type}`;
   toast.textContent = message;
+  toast.style.cursor = 'pointer';
   container.appendChild(toast);
 
-  setTimeout(() => {
-    toast.style.animation = 'toast-in 0.3s ease reverse';
-    toast.addEventListener('animationend', () => toast.remove());
-  }, 3000);
+  function dismiss() {
+    toast.style.opacity = '0';
+    toast.style.transform = 'translateY(-10px)';
+    toast.style.transition = 'all 0.3s ease';
+    setTimeout(() => { if (toast.parentNode) toast.remove(); }, 300);
+  }
+
+  toast.addEventListener('click', dismiss);
+  setTimeout(dismiss, 2200);
 }
 
 /* ─── 20. MOUSE GLOW EFFECT ──────────────────────────────── */
@@ -962,4 +979,422 @@ console.log(
 
   window.addEventListener('resize', onResize, { passive: true });
 })();
+
+/* ─── 9. PROJECT DETAILS MODAL HANDLER ───────────────────── */
+(function initProjectModal() {
+  const modal = $('#project-modal');
+  const modalBody = $('#modal-body');
+  const closeBtn = $('#modal-close-btn');
+
+  if (!modal || !modalBody) return;
+
+  const PROJECTS_DATA = {
+    'smartdash': {
+      title: 'Smart Dashboard Pro',
+      badge: 'Client-Side BI & AI',
+      subtitle: 'Single-File HTML Data Analytics Tool — No Server Required',
+      image: 'Certlflcations/projects/SmartDash Pro Analytics Platform/1.jpg',
+      gallery: [
+        'Certlflcations/projects/SmartDash Pro Analytics Platform/1.jpg',
+        'Certlflcations/projects/SmartDash Pro Analytics Platform/2.png',
+        'Certlflcations/projects/SmartDash Pro Analytics Platform/3.jpg'
+      ],
+      overview: 'A fully client-side, single-file HTML data analytics tool — no server required. Upload any file (Excel, CSV, TSV, JSON, ODS) and it automatically analyzes it: detects each column\'s type (numeric/date/categorical/text), computes stats (min/max/avg/nulls), and auto-generates insights and charts (Line, Pie, Bar, Histogram) based on the data\'s shape.',
+      highlights: [
+        'Interactive Data Table: Full search, column sorting, and instant pagination.',
+        'SQL Query Engine & Formula Builder: Create custom derived columns and run SQL queries in-browser.',
+        'DataParse Precision Engine: Arabic-Indic numerals parsing, outlier detection, and correlation analysis.',
+        'PowerPoint Export: One-click export of generated charts and insights into PowerPoint slides.',
+        'AI Assistant "CUBE" 🤖: Interactive AI chat (Gemini/Claude/OpenAI/OpenRouter) that answers questions directly about your dataset.',
+        '100% Client-Side Privacy: Everything stays on your device — zero data leaves your browser except an optional 15-row sample when using AI chat.'
+      ],
+      stack: ['HTML5 / JS (ES6+)', 'DataParse Engine', 'SQL Engine', 'Chart.js', 'PowerPoint Export', 'AI Assistant "CUBE"'],
+      impact: 'Zero server cost, maximum privacy, and instant multi-format data analytics directly inside the browser.'
+    },
+    'google-sheets-apps-script': {
+      title: 'Field Operations Control Center',
+      badge: 'Google Apps Script & Automation',
+      subtitle: 'Google Sheets DB Backend + Apps Script Automation Engine + Web Dashboard',
+      image: 'Certlflcations/projects/How to Build a Professional Dashboard Using Google Sheets + Google Apps Script/1.jpg',
+      gallery: [
+        'Certlflcations/projects/How to Build a Professional Dashboard Using Google Sheets + Google Apps Script/1.jpg',
+        'Certlflcations/projects/How to Build a Professional Dashboard Using Google Sheets + Google Apps Script/2.jpg'
+      ],
+      overview: 'You don’t always need a complex database or expensive backend to build a powerful business dashboard. You can use Google Sheets as your data source and build a complete web-based Operations Control Center using Google Apps Script + HTML/CSS/JavaScript. Practical example of transforming field operations from spreadsheets into a centralized control center for monitoring performance, productivity, tasks, and KPIs.',
+      highlights: [
+        '1. Data Analysis: Defined Branches, Employees, Teams, Areas, Tasks, Campaigns, Visits, and business rules.',
+        '2. Database Structure: Organized Google Sheets into structured relational tabs instead of single sheets.',
+        '3. Backend Development: Built Google Apps Script engine to read, update, validate, and handle business logic.',
+        '4. Dashboard Development: Interface with KPI Cards, Dynamic Filters, Search, Tables, Charts, and Notifications.',
+        '5. Analytics & Insights: Tracking Completion Rate, Employee Performance, Area Performance, Monthly Trends, Campaign Performance, Training Progress, and Overdue Tasks.',
+        '6. Dynamic Filters: Instant filter by Area, Team, Employee, or Campaign without reloading the page.',
+        '7. AI Analysis 🤖: "Ask AI" feature ("Show pending visits in Madinaty", "What is completion rate?") with instant automated answers.',
+        '8. Automation ⚡: Automate task creation, overdue detection, email report distribution, and monthly snapshots.',
+        '9. Data Quality & Audit Log: Duplicate detection, validation rules, and activity tracking log.'
+      ],
+      stack: ['Google Apps Script', 'Google Sheets API', 'JavaScript', 'HTML5 / CSS3', 'Ask AI Data Query', 'ETL Automation'],
+      impact: 'Transformed traditional spreadsheets into a centralized, real-time Field Operations Control Center for 115+ personnel.'
+    },
+    'novelusion': {
+      title: 'Novelusion — E-commerce & Digital Solutions',
+      badge: 'E-commerce & Web Solutions',
+      subtitle: 'International Brand & Digital Operations Support',
+      image: 'Certlflcations/projects/Novelusion/1.png',
+      gallery: [
+        'Certlflcations/projects/Novelusion/1.png',
+        'Certlflcations/projects/Novelusion/2.png',
+        'Certlflcations/projects/Novelusion/3.png',
+        'Certlflcations/projects/Novelusion/4.png',
+        'Certlflcations/projects/Novelusion/5.png',
+        'Certlflcations/projects/Novelusion/6.png'
+      ],
+      overview: 'Comprehensive digital operations platform and direct-to-consumer store management under TRENDOPIA LTD (UK). Providing e-commerce storefront development, payment infrastructure, website security, data organization, and scientific research reformatting.',
+      highlights: [
+        'E-commerce Store Development & Management: Storefront creation, product catalog setup, and inventory automation.',
+        'Payment Gateway Integration & Troubleshooting: Multi-currency Stripe, PayPal, and regional payment setup.',
+        'SSL Installation & Website Security Optimization: Cloudflare DNS, SSL encryption, and server hardening.',
+        'Website Bug Fixing & Technical Support: Core Web Vitals optimization and troubleshooting.',
+        'Excel Reporting & Data Organization: Custom reporting templates and presentation design.',
+        'Scientific Research & Book Formatting: Reformatting scientific research papers, book layout, and freelance video editing.'
+      ],
+      stack: ['Shopify / WooCommerce', 'Payment Gateways (Stripe, PayPal)', 'SSL & Security', 'Vibe Coding Tools', 'Excel Automation', 'Research Formatting'],
+      impact: 'Achieved 99.9% uptime with secure payment processing and high customer satisfaction.'
+    },
+    'ccna': {
+      title: 'CCNA Exploration — Network Fundamentals',
+      badge: 'Technical Certificate',
+      subtitle: 'International Academy (2019)',
+      image: 'Certlflcations/CCNA Exploration.jpg',
+      gallery: ['Certlflcations/CCNA Exploration.jpg'],
+      overview: 'Certified technical course in CCNA Exploration covering Network Fundamentals, IP addressing, Ethernet technologies, OSI & TCP/IP stack layers, and router/switch configurations.',
+      highlights: [
+        'Router & Switch CLI Configuration & Troubleshooting',
+        'IPv4 & IPv6 Subnetting, VLSM & Routing Protocols',
+        'VLANs, Trunking, NAT, and Access Control Lists (ACLs)',
+        'Network Security Fundamentals & Diagnostic Tools (CMD, Ping, Traceroute)'
+      ],
+      stack: ['Cisco iOS', 'Packet Tracer', 'Subnetting', 'Routing & Switching', 'Network Security'],
+      impact: 'Solid technical foundation in networking, IT diagnostics, and infrastructure protocols.'
+    },
+    'security-award': {
+      title: 'Security Award Certificate of Excellence',
+      badge: 'Security Excellence Award',
+      subtitle: 'Cairo Metro Line 3 JV Phase 3 (2024)',
+      image: 'Certlflcations/Security Award Certificate.jpg',
+      gallery: ['Certlflcations/Security Award Certificate.jpg'],
+      overview: 'Official award certificate issued by Cairo Metro Line 3 Joint Venture (CML3 JV PHASE3) leadership team in recognition of outstanding professionalism, extreme vigilance, operational discipline, and proper emergency response.',
+      highlights: [
+        'Signed by Project Director (Florian BRETAUDEAU) & Security Manager (Hamdy METWALY)',
+        'Exemplary performance during high-density metro operations',
+        'Effective emergency response, risk mitigation, and station safety',
+        'Field team leadership and operational vigilance'
+      ],
+      stack: ['Field Operations', 'Security Management', 'Crisis Response', 'Team Leadership', 'Operational Safety'],
+      impact: 'Formal recognition for high-stress field operational excellence and zero-incident leadership.'
+    },
+    'g4s-supervisor': {
+      title: 'G4S Official Supervisor Qualification',
+      badge: 'G4S Certified Supervisor',
+      subtitle: 'Cairo Metro Line 3 Phase 3 (Co. G4S - 153673)',
+      image: 'Certlflcations/G4S Supervisor — Cairo Metro Line 3.jpg',
+      gallery: ['Certlflcations/G4S Supervisor — Cairo Metro Line 3.jpg'],
+      overview: 'Official supervisory identification and qualification badge for G4S operations at Cairo Metro Line 3 Phase 3. Valid from January 4, 2025 through January 3, 2026.',
+      highlights: [
+        'Supervisor Badge No: Co. G4S - 153673',
+        'Direct oversight of station security teams, access control, and shift operations',
+        'Operational reporting, incident documentation, and team coordination',
+        'Strict adherence to safety standards, protocols, and field compliance'
+      ],
+      stack: ['G4S Operations', 'Supervisory Management', 'Access Control', 'Reporting Systems', 'Metro Security'],
+      impact: 'Proven track record of managing field operations and maintaining security standards.'
+    }
+  };
+
+  // Attach event listeners to all detail buttons
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('.btn-project-details');
+    if (!btn) return;
+
+    const projectId = btn.getAttribute('data-project-id');
+    const data = PROJECTS_DATA[projectId];
+
+    if (!data) return;
+
+    renderModalContent(data);
+    openModal();
+  });
+
+  function renderModalContent(data) {
+    let imageHTML = '';
+    if (data.gallery && data.gallery.length > 0) {
+      const thumbs = data.gallery.map((img, idx) => `
+        <img src="${img}" alt="${data.title}" class="modal-thumb ${idx === 0 ? 'active' : ''}" onclick="document.getElementById('modal-main-img').src='${img}'; document.querySelectorAll('.modal-thumb').forEach(t => t.classList.remove('active')); this.classList.add('active');" />
+      `).join('');
+      imageHTML = `
+        <div class="modal-gallery-wrap" style="margin: 1.25rem 0;">
+          <div class="modal-image-preview">
+            <img src="${data.gallery[0]}" alt="${data.title}" id="modal-main-img" style="width: 100%; border-radius: 12px; max-height: 380px; object-fit: contain; background: #060a14; border: 1px solid rgba(0,212,255,0.25);" />
+          </div>
+          <div class="modal-thumbs-grid" style="display: flex; gap: 8px; margin-top: 10px; overflow-x: auto; padding-bottom: 5px;">${thumbs}</div>
+        </div>
+      `;
+    } else if (data.image) {
+      imageHTML = `
+        <div class="modal-image-preview" style="margin: 1.25rem 0;">
+          <img src="${data.image}" alt="${data.title}" style="width: 100%; border-radius: 12px; max-height: 380px; object-fit: contain; background: #060a14; border: 1px solid rgba(0,212,255,0.25);" />
+        </div>
+      `;
+    }
+
+    const highlightsHTML = data.highlights
+      ? `<ul class="modal-bullets">${data.highlights.map(h => `<li>${h}</li>`).join('')}</ul>`
+      : '';
+
+    const stackHTML = data.stack
+      ? `<div class="modal-tech-stack">${data.stack.map(s => `<span class="modal-tech-tag">${s}</span>`).join('')}</div>`
+      : '';
+
+    const impactHTML = data.impact
+      ? `<div class="modal-impact-box">
+          <div class="modal-impact-title">Key Impact & Achievements</div>
+          <div class="modal-impact-text">${data.impact}</div>
+         </div>`
+      : '';
+
+    modalBody.innerHTML = `
+      <div class="modal-header-badge">✦ ${data.badge}</div>
+      <h2 class="modal-project-title">${data.title}</h2>
+      <p class="modal-project-sub">${data.subtitle}</p>
+      ${imageHTML}
+      <h3 class="modal-section-title"><span>📌</span> Project Overview</h3>
+      <p class="modal-description">${data.overview}</p>
+      <h3 class="modal-section-title"><span>🚀</span> Key Features & Highlights</h3>
+      ${highlightsHTML}
+      <h3 class="modal-section-title"><span>🛠️</span> Technologies & Tools</h3>
+      ${stackHTML}
+      ${impactHTML}
+    `;
+  }
+
+  function openModal() {
+    modal.classList.add('active');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    modal.classList.remove('active');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  closeBtn?.addEventListener('click', closeModal);
+
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('active')) {
+      closeModal();
+    }
+  });
+})();
+
+/* ─── 10. NOVELUSION GALLERY SLIDER ─────────────────────── */
+let novelusionIdx = 0;
+window.novelusionGallery = function(dir) {
+  const track = document.getElementById('novelusion-track');
+  const dots = document.querySelectorAll('#novelusion-dots .cert-gallery-dot');
+  const total = 6;
+  if (!track) return;
+  novelusionIdx = (novelusionIdx + dir + total) % total;
+  track.style.transform = `translateX(-${novelusionIdx * 100}%)`;
+  dots.forEach((d, i) => d.classList.toggle('active', i === novelusionIdx));
+};
+
+/* ─── 11. PROCEDURAL AUDIO SYNTHESIZER & SOUND EFFECTS ────── */
+(function initAudioSynthesizer() {
+  let audioCtx = null;
+  let soundEnabled = localStorage.getItem('yh-sound') !== 'off';
+
+  const btn = $('#sound-toggle');
+  if (btn) {
+    btn.classList.toggle('muted', !soundEnabled);
+    const icon = btn.querySelector('.sound-icon');
+    if (icon) icon.textContent = soundEnabled ? '🔊' : '🔇';
+
+    btn.addEventListener('click', () => {
+      soundEnabled = !soundEnabled;
+      localStorage.setItem('yh-sound', soundEnabled ? 'on' : 'off');
+      btn.classList.toggle('muted', !soundEnabled);
+      if (icon) icon.textContent = soundEnabled ? '🔊' : '🔇';
+      if (soundEnabled) playSound(600, 0.08, 'sine');
+    });
+  }
+
+  function getAudioContext() {
+    if (!audioCtx && typeof window.AudioContext !== 'undefined') {
+      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    }
+    if (audioCtx && audioCtx.state === 'suspended') {
+      audioCtx.resume();
+    }
+    return audioCtx;
+  }
+
+  function playSound(freq, duration = 0.05, type = 'sine') {
+    if (!soundEnabled) return;
+    try {
+      const ctx = getAudioContext();
+      if (!ctx) return;
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = type;
+      osc.frequency.setValueAtTime(freq, ctx.currentTime);
+      gain.gain.setValueAtTime(0.04, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + duration);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start();
+      osc.stop(ctx.currentTime + duration);
+    } catch (e) { /* silent catch */ }
+  }
+
+  // Attach sound feedback to interactive buttons & links
+  document.addEventListener('mouseover', e => {
+    if (e.target.closest('button, a, .project-card, .cert-card, .contact-item')) {
+      playSound(440, 0.03, 'sine');
+    }
+  });
+
+  document.addEventListener('click', e => {
+    if (e.target.closest('button, a, .project-card, .btn-project-details')) {
+      playSound(780, 0.07, 'triangle');
+    }
+  });
+})();
+
+/* ─── 12. LIVE TELEMETRY & AUTOMATION STREAM ─────────────── */
+(function initTelemetryStream() {
+  const logContainer = $('#telemetry-log');
+  if (!logContainer) return;
+
+  const logsPool = [
+    { type: 'OK', text: 'SQL ETL Pipeline: 100% Synced' },
+    { type: 'OK', text: 'D2C Store Web Vitals: 99.8% Speed Score' },
+    { type: 'INFO', text: 'Field Operations Engine: 115+ Nodes Verified' },
+    { type: 'OK', text: 'Google Apps Script Auto-Batch: Active' },
+    { type: 'INFO', text: 'SSL / TLS Handshake: 2048-bit Hardened' },
+    { type: 'OK', text: 'Power BI KPI Scorecard: Data Stream Refreshed' },
+    { type: 'INFO', text: 'Vibe Coding Framework: Zero Vulnerabilities' }
+  ];
+
+  let logIdx = 0;
+
+  function getTimeStr() {
+    const d = new Date();
+    return `[${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}:${String(d.getSeconds()).padStart(2,'0')}]`;
+  }
+
+  setInterval(() => {
+    const item = logsPool[logIdx % logsPool.length];
+    logIdx++;
+
+    const div = document.createElement('div');
+    div.className = 'log-line';
+    const tagClass = item.type === 'OK' ? 'log-ok' : 'log-info';
+    div.innerHTML = `<span class="log-time">${getTimeStr()}</span> <span class="${tagClass}">${item.type}</span> &gt; ${item.text}`;
+    
+    logContainer.appendChild(div);
+    if (logContainer.children.length > 5) {
+      logContainer.removeChild(logContainer.children[0]);
+    }
+    logContainer.scrollTop = logContainer.scrollHeight;
+  }, 4500);
+})();
+
+/* ─── 13. 3D MECH HUD ACTION CONTROLS ───────────────────── */
+(function initMechHUD() {
+  const pulseBtn = $('#hud-pulse-btn');
+  const spinBtn = $('#hud-spin-btn');
+  const shieldBtn = $('#hud-shield-btn');
+
+  pulseBtn?.addEventListener('click', () => {
+    pulseBtn.classList.add('active-pulse');
+    showToast('⚡ Energy Pulse Fired into 3D Mech Core!', 'success');
+    setTimeout(() => pulseBtn.classList.remove('active-pulse'), 1200);
+  });
+
+  spinBtn?.addEventListener('click', () => {
+    spinBtn.classList.add('active-pulse');
+    showToast('🌀 Core Reactor Speed Boosted!', 'default');
+    setTimeout(() => spinBtn.classList.remove('active-pulse'), 1200);
+  });
+
+  shieldBtn?.addEventListener('click', () => {
+    shieldBtn.classList.add('active-pulse');
+    showToast('🛡️ Shield Aura Reinforced!', 'default');
+    setTimeout(() => shieldBtn.classList.remove('active-pulse'), 1200);
+  });
+})();
+
+/* ─── 14. PROJECT GALLERY SLIDERS ────────────────────────── */
+window.smartdashIdx = 0;
+window.smartdashGallery = function(dir) {
+  const images = [
+    'Certlflcations/projects/SmartDash Pro Analytics Platform/1.jpg',
+    'Certlflcations/projects/SmartDash Pro Analytics Platform/2.png',
+    'Certlflcations/projects/SmartDash Pro Analytics Platform/3.jpg'
+  ];
+  window.smartdashIdx = (window.smartdashIdx + dir + images.length) % images.length;
+  const track = document.getElementById('smartdash-track');
+  const dots = document.querySelectorAll('#smartdash-dots .cert-gallery-dot');
+  if (track) track.style.transform = `translateX(-${window.smartdashIdx * 100}%)`;
+  dots.forEach((dot, idx) => dot.classList.toggle('active', idx === window.smartdashIdx));
+};
+
+window.googleIdx = 0;
+window.googleGallery = function(dir) {
+  const images = [
+    'Certlflcations/projects/How to Build a Professional Dashboard Using Google Sheets + Google Apps Script/1.jpg',
+    'Certlflcations/projects/How to Build a Professional Dashboard Using Google Sheets + Google Apps Script/2.jpg'
+  ];
+  window.googleIdx = (window.googleIdx + dir + images.length) % images.length;
+  const track = document.getElementById('google-track');
+  const dots = document.querySelectorAll('#google-dots .cert-gallery-dot');
+  if (track) track.style.transform = `translateX(-${window.googleIdx * 100}%)`;
+  dots.forEach((dot, idx) => dot.classList.toggle('active', idx === window.googleIdx));
+};
+
+window.novelusionIdx = 0;
+window.novelusionGallery = function(dir) {
+  const images = [
+    'Certlflcations/projects/Novelusion/1.png',
+    'Certlflcations/projects/Novelusion/2.png',
+    'Certlflcations/projects/Novelusion/3.png',
+    'Certlflcations/projects/Novelusion/4.png',
+    'Certlflcations/projects/Novelusion/5.png',
+    'Certlflcations/projects/Novelusion/6.png'
+  ];
+  window.novelusionIdx = (window.novelusionIdx + dir + images.length) % images.length;
+  const track = document.getElementById('novelusion-track');
+  const dots = document.querySelectorAll('#novelusion-dots .cert-gallery-dot');
+  if (track) track.style.transform = `translateX(-${window.novelusionIdx * 100}%)`;
+  dots.forEach((dot, idx) => dot.classList.toggle('active', idx === window.novelusionIdx));
+};
+
+/* ─── 15. PILL FILTERS HANDLER ───────────────────────────── */
+(function initPillFilters() {
+  const btns = document.querySelectorAll('.pill-filter-btn');
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      btns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    });
+  });
+})();
+
+
+
 
